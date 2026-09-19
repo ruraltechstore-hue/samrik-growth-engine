@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Samrik Solutions",
   tagline: "Driving growth through smarter sales solutions.",
-  email: "Add official email later",
-  phone: "Add phone number later",
-  address: "Add office address later",
+  email: "info@samrik.co.in",
+  phone: "9392207839",
+  address: "Bahadurpally, Hyderabad",
   hours: ["Monday – Friday", "9:00 AM – 6:00 PM"],
   socials: {
     linkedin: "#",
