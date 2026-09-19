@@ -15,7 +15,7 @@ type PartnerData = z.infer<typeof partnerSchema>;
 
 const fieldClass = "h-11 bg-card";
 
-function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+function Field({ label, error, children }: { label: string; error: string | undefined; children: React.ReactNode }) {
   return <div><label className="mb-2 block text-sm font-semibold text-foreground">{label}</label>{children}{error && <p className="mt-1.5 text-xs text-destructive">{error}</p>}</div>;
 }
 
