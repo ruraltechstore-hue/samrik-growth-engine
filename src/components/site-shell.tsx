@@ -10,20 +10,20 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-40 border-b border-border/80 bg-background/95 backdrop-blur">
-        <div className="section-shell flex h-18 items-center justify-between">
-          <Brand />
-          <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
+        <div className="section-shell flex h-18 items-center">
+          <div className="shrink-0"><Brand /></div>
+          <nav className="ml-auto hidden items-center gap-4 min-[900px]:flex xl:gap-6" aria-label="Primary navigation">
             {navigation.map((item) => (
-              <Link key={item.to} to={item.to} activeOptions={{ exact: item.to === "/" }} className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground" activeProps={{ className: "text-foreground" }}>
+              <Link key={item.to} to={item.to} activeOptions={{ exact: item.to === "/" }} className="whitespace-nowrap text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground xl:text-sm" activeProps={{ className: "text-foreground" }}>
                 {item.label}
               </Link>
             ))}
           </nav>
-          <div className="hidden lg:block">
-            <Button asChild variant="accent" size="lg"><Link to="/contact">Let's Talk <MoveUpRight /></Link></Button>
+          <div className="ml-4 hidden min-[900px]:block xl:ml-6">
+            <Button asChild variant="accent" size="default"><Link to="/contact">Let's Talk <MoveUpRight /></Link></Button>
           </div>
           <Sheet>
-            <SheetTrigger asChild><Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu"><Menu /></Button></SheetTrigger>
+            <SheetTrigger asChild><Button variant="ghost" size="icon" className="ml-auto min-[900px]:hidden" aria-label="Open menu"><Menu /></Button></SheetTrigger>
             <SheetContent className="w-[88vw] border-border bg-background p-0">
               <SheetHeader className="border-b border-border p-6 text-left"><SheetTitle><Brand /></SheetTitle><SheetDescription>Sales and business-development solutions.</SheetDescription></SheetHeader>
               <nav className="flex flex-col p-4" aria-label="Mobile navigation">
