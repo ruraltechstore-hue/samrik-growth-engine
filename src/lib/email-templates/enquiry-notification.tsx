@@ -41,7 +41,7 @@ function EnquiryNotification({ formType = 'Contact Form', rows = [] }: EnquiryNo
 
 export const template = {
   component: EnquiryNotification,
-  subject: (data: Record<string, any>) => `New ${data.formType ?? 'Website'} Enquiry — ${data.name ?? 'Samrik Solutions'}`,
+  subject: (data: Record<string, any>) => `New ${data["formType"] ?? "Website"} Enquiry — ${data["name"] ?? "Samrik Solutions"}`,
   displayName: 'Enquiry notification (to Samrik Solutions)',
   to: 'info@samrik.co.in',
   previewData: {
