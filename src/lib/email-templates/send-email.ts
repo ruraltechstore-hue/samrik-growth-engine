@@ -68,7 +68,7 @@ export async function sendTemplateEmail(
     },
   }
   if (options.replyTo) {
-    body.reply_to = options.replyTo
+    body['reply_to'] = options.replyTo
   }
 
   const response = await fetch('https://api.resend.com/emails', {
@@ -95,5 +95,6 @@ export async function sendTemplateEmail(
   }
 
   const result = await response.json() as { id?: string }
-  return { sent: true, id: result.id }
+  const id = result.id
+  return id ? { sent: true, id } : { sent: true }
 }
