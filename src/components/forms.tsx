@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 const base = { name: z.string().trim().min(2, "Enter your full name").max(100), company: z.string().trim().min(2, "Enter your company name").max(120), phone: z.string().trim().min(7, "Enter a valid phone number").max(30), message: z.string().trim().min(10, "Please add a little more detail").max(1200), email: z.string().trim().email("Enter a valid email address").max(255) };
 const contactSchema = z.object({ ...base, subject: z.string().trim().min(3, "Enter a subject").max(150) });
-const partnerSchema = z.object({ ...base, industry: z.string().trim().min(2, "Enter your industry").max(100), website: z.union([z.literal(""), z.string().trim().url("Enter a complete website URL")]), service: z.enum(["SaaS Sales", "Logistics Sales", "Educational Sales", "Lead Generation", "Business Development", "Other"], { required_error: "Select a service" }), requirement: z.string().trim().min(5, "Describe your expected requirement").max(300) });
+const partnerSchema = z.object({ ...base, industry: z.string().trim().min(2, "Enter your industry").max(100), website: z.union([z.literal(""), z.string().trim().url("Enter a complete website URL")]), service: z.enum(["SaaS Sales", "Logistics Sales", "Educational Services", "Rural Tech Store", "Lead Generation", "Business Development", "Other"], { required_error: "Select a service" }), requirement: z.string().trim().min(5, "Describe your expected requirement").max(300) });
 
 type ContactData = z.infer<typeof contactSchema>;
 type PartnerData = z.infer<typeof partnerSchema>;
