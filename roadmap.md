@@ -5,3 +5,4 @@
 - [x] Add validated partnership and contact forms with success states
 - [x] Add unique metadata and preserve a branded 404 page
 - [x] Verify desktop and mobile layouts and key interactions
+- [ ] Expand Educational Services with supplied digital-skills content and premium responsive presentation
