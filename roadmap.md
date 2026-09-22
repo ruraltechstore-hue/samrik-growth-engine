@@ -7,4 +7,5 @@
 - [x] Verify desktop and mobile layouts and key interactions
 - [x] Expand Educational Services with supplied digital-skills content and premium responsive presentation
 - [x] Align Educational Services cards and detail content with the shared four-service design
-- [ ] Emails blocked until GoDaddy DNS records for notify.samrik.co.in are added (TXT _lovable-email.samrik.co.in + 2 NS records) — waiting on user
+- [x] Wire forms to send real emails via Resend (tested successfully with info@samrik.co.in)
+- [ ] Verify samrik.co.in domain in Resend dashboard for best deliverability (recommended next step)
