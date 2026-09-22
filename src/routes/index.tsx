@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Boxes, Building2, GraduationCap, Handshake, HeartHandshake, Route as RouteIcon, Target, Users, Workflow } from "lucide-react";
+import { ArrowRight, Boxes, Building2, GraduationCap, Handshake, HeartHandshake, Route as RouteIcon, Store, Target, Users, Workflow } from "lucide-react";
 import heroImage from "@/assets/samrik-growth-hero.jpg";
 import { Button } from "@/components/ui/button";
 import { CTASection, IconCard, SectionHeading } from "@/components/marketing";
