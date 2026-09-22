@@ -216,6 +216,36 @@ function Services() {
         </div>
       </section>
 
+      <section id="rural-tech-store" className="scroll-mt-24 py-20 md:py-28">
+        <div className="section-shell">
+          <article className="grid gap-10 border-b border-border pb-16 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="rise-in">
+              <span className="grid size-14 place-items-center rounded-md bg-primary text-primary-foreground"><Store /></span>
+              <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Sales service 04</p>
+              <h2 className="mt-3 font-display text-3xl font-bold">Rural Tech Store</h2>
+              <p className="mt-5 text-lg font-semibold text-foreground">Digital Services & Rural Entrepreneurship</p>
+              <p className="mt-5 leading-8 text-muted-foreground">Rural Tech Store focuses on enabling access to essential digital services in rural and semi-urban communities while creating opportunities for local entrepreneurs to establish and operate digital service centers.</p>
+              <p className="mt-4 leading-8 text-muted-foreground">The service model brings multiple digital services together through a single platform, helping individuals and communities access services conveniently while supporting local digital entrepreneurship.</p>
+              <Button asChild variant="accent" size="lg" className="mt-7"><Link to="/partner">Explore Rural Tech Store <ArrowRight /></Link></Button>
+            </div>
+            <div className="bg-surface p-7 md:p-9">
+              <h3 className="mb-6 font-display text-lg font-bold">Key Service Areas</h3>
+              <div className="grid gap-5 sm:grid-cols-2">
+                {ruralTechAreas.map((area) => {
+                  const Icon = area.icon;
+                  return (
+                    <div key={area.title} className="flex items-start gap-4 rounded-lg border border-border bg-card p-4 shadow-sm">
+                      <span className="grid size-10 shrink-0 place-items-center rounded-md bg-primary text-primary-foreground"><Icon className="size-5" /></span>
+                      <p className="font-semibold text-foreground">{area.title}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section className="bg-surface py-20 md:py-28">
         <div className="section-shell">
           <SectionHeading eyebrow="Additional Sales Support" title="Flexible Sales Capabilities" description="Targeted support that strengthens your existing sales and business-development efforts." />
