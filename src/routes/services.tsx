@@ -3,6 +3,7 @@ import {
   ArrowRight,
   BadgeCheck,
   Blocks,
+  BookOpen,
   Boxes,
   BriefcaseBusiness,
   Building2,
@@ -12,14 +13,19 @@ import {
   Cpu,
   GraduationCap,
   Handshake,
+  Landmark,
   Lightbulb,
   Megaphone,
+  Monitor,
   Network,
+  Plane,
+  Receipt,
   Rocket,
   Search,
   Settings2,
   ShoppingCart,
   Sparkles,
+  Store,
   Target,
   TrendingUp,
   UserRoundSearch,
@@ -35,10 +41,10 @@ import { CTASection, CheckList, IconCard, PageHero, SectionHeading } from "@/com
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Sales & Educational Services | Samrik Solutions" },
-      { name: "description", content: "Explore Samrik Solutions services for SaaS and logistics sales, plus practical digital, sales, entrepreneurship, and business-growth learning." },
-      { property: "og:title", content: "Sales & Educational Services | Samrik Solutions" },
-      { property: "og:description", content: "Business-focused sales solutions and practical learning for careers, freelancing, startups, and business growth." },
+      { title: "Sales, Educational & Rural Tech Services | Samrik Solutions" },
+      { name: "description", content: "Explore Samrik Solutions services for SaaS and logistics sales, practical digital learning, and accessible rural digital services through Rural Tech Store." },
+      { property: "og:title", content: "Sales, Educational & Rural Tech Services | Samrik Solutions" },
+      { property: "og:description", content: "Business-focused sales solutions, practical learning, and rural digital service centers for entrepreneurs and communities." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/services" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -88,10 +94,21 @@ const focusSteps = [
   { icon: ChartNoAxesCombined, label: "Grow", detail: "Pursue new opportunities" },
 ] as const;
 
+const ruralTechAreas: ReadonlyArray<{ icon: LucideIcon; title: string }> = [
+  { icon: Receipt, title: "Utility & Bill Payment Services" },
+  { icon: Landmark, title: "Financial Services" },
+  { icon: Building2, title: "Government & Digital Services" },
+  { icon: Plane, title: "Travel Services" },
+  { icon: ShoppingCart, title: "E-Commerce Services" },
+  { icon: BookOpen, title: "Online Learning Services" },
+  { icon: Monitor, title: "Digital Service Center Support" },
+  { icon: Lightbulb, title: "Rural Entrepreneurship" },
+];
+
 function Services() {
   return (
     <>
-      <PageHero eyebrow="All Services" title="Our Sales & Educational Services" description="Explore business-focused sales solutions and practical learning designed for careers, entrepreneurship, and growth in the digital economy." />
+      <PageHero eyebrow="All Services" title="Our Sales, Educational & Rural Tech Services" description="Explore business-focused sales solutions, practical learning, and accessible rural digital services designed for careers, entrepreneurship, and community growth." />
 
       <section className="py-20 md:py-28">
         <div className="section-shell space-y-16">
@@ -196,6 +213,36 @@ function Services() {
             <Button asChild variant="accent" size="lg"><a href="#learning-areas">Explore Educational Services <ArrowRight /></a></Button>
             <Button asChild variant="inverse" size="lg"><Link to="/contact">Contact Us</Link></Button>
           </div>
+        </div>
+      </section>
+
+      <section id="rural-tech-store" className="scroll-mt-24 py-20 md:py-28">
+        <div className="section-shell">
+          <article className="grid gap-10 border-b border-border pb-16 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="rise-in">
+              <span className="grid size-14 place-items-center rounded-md bg-primary text-primary-foreground"><Store /></span>
+              <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Sales service 04</p>
+              <h2 className="mt-3 font-display text-3xl font-bold">Rural Tech Store</h2>
+              <p className="mt-5 text-lg font-semibold text-foreground">Digital Services & Rural Entrepreneurship</p>
+              <p className="mt-5 leading-8 text-muted-foreground">Rural Tech Store focuses on enabling access to essential digital services in rural and semi-urban communities while creating opportunities for local entrepreneurs to establish and operate digital service centers.</p>
+              <p className="mt-4 leading-8 text-muted-foreground">The service model brings multiple digital services together through a single platform, helping individuals and communities access services conveniently while supporting local digital entrepreneurship.</p>
+              <Button asChild variant="accent" size="lg" className="mt-7"><Link to="/partner">Explore Rural Tech Store <ArrowRight /></Link></Button>
+            </div>
+            <div className="bg-surface p-7 md:p-9">
+              <h3 className="mb-6 font-display text-lg font-bold">Key Service Areas</h3>
+              <div className="grid gap-5 sm:grid-cols-2">
+                {ruralTechAreas.map((area) => {
+                  const Icon = area.icon;
+                  return (
+                    <div key={area.title} className="flex items-start gap-4 rounded-lg border border-border bg-card p-4 shadow-sm">
+                      <span className="grid size-10 shrink-0 place-items-center rounded-md bg-primary text-primary-foreground"><Icon className="size-5" /></span>
+                      <p className="font-semibold text-foreground">{area.title}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 

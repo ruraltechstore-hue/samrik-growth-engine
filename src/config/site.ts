@@ -23,14 +23,18 @@ export const navigation = [
 export const services = [
   {
     title: "SaaS Sales",
-    description: "Help SaaS businesses generate qualified leads, engage potential customers, and accelerate software sales.",
+    description: "Help SaaS businesses generate leads, acquire customers, and expand their sales reach.",
   },
   {
     title: "Logistics Sales",
-    description: "Help logistics and supply-chain businesses connect with potential clients and expand their customer network.",
+    description: "Support logistics businesses with customer acquisition, sales outreach, and business development.",
   },
   {
-    title: "Educational Sales",
-    description: "Support education and learning organizations with customer acquisition and enrollment-focused sales solutions.",
+    title: "Educational Services",
+    description: "Provide practical digital and business learning across e-commerce, digital marketing, AI, sales, freelancing, entrepreneurship, and business growth.",
+  },
+  {
+    title: "Rural Tech Store",
+    description: "Empowering rural and semi-urban communities through digital services and local entrepreneurship opportunities.",
   },
 ] as const;
