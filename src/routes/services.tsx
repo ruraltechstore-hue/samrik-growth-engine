@@ -41,10 +41,10 @@ import { CTASection, CheckList, IconCard, PageHero, SectionHeading } from "@/com
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Sales & Educational Services | Samrik Solutions" },
-      { name: "description", content: "Explore Samrik Solutions services for SaaS and logistics sales, plus practical digital, sales, entrepreneurship, and business-growth learning." },
-      { property: "og:title", content: "Sales & Educational Services | Samrik Solutions" },
-      { property: "og:description", content: "Business-focused sales solutions and practical learning for careers, freelancing, startups, and business growth." },
+      { title: "Sales, Educational & Rural Tech Services | Samrik Solutions" },
+      { name: "description", content: "Explore Samrik Solutions services for SaaS and logistics sales, practical digital learning, and accessible rural digital services through Rural Tech Store." },
+      { property: "og:title", content: "Sales, Educational & Rural Tech Services | Samrik Solutions" },
+      { property: "og:description", content: "Business-focused sales solutions, practical learning, and rural digital service centers for entrepreneurs and communities." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/services" },
       { name: "twitter:card", content: "summary_large_image" },
