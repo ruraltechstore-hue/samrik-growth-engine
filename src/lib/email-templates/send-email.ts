@@ -1,22 +1,15 @@
 import * as React from 'react'
 import { render } from '@react-email/render'
-import { EmailAPIError, sendLovableEmail } from '@lovable.dev/email-js'
 import { TEMPLATES } from './registry'
 
-// Server-only: reads LOVABLE_API_KEY. Never import from client components.
+// Server-only: reads Resend credentials from environment variables.
+// Never import from client components.
 
-// Configuration baked in at scaffold time
 const SITE_NAME = "Samrik Solutions"
-// SENDER_DOMAIN is the verified sender subdomain FQDN (e.g., "notify.example.com").
-// It MUST match the subdomain delegated to Lovable's nameservers. NEVER use the root domain.
-const SENDER_DOMAIN = "notify.samrik.co.in"
-// FROM_DOMAIN is the domain shown in the From: header (e.g., "example.com").
-// Can be the root domain when display_from_root is enabled — this is cosmetic only.
-const FROM_DOMAIN = "notify.samrik.co.in"
 
 export type SendTemplateEmailResult =
-  | { sent: true }
-  | { sent: false; reason: 'recipient_suppressed' }
+  | { sent: true; id?: string }
+  | { sent: false; reason: 'recipient_suppressed' | 'missing_api_key' }
 
 export interface SendTemplateEmailOptions {
   templateData?: Record<string, any>
@@ -26,21 +19,20 @@ export interface SendTemplateEmailOptions {
 }
 
 /**
- * Renders a registered template and sends it through Lovable's managed email
- * API. Suppression, retries, and rate limits are enforced by Lovable
- * server-side. A suppressed recipient is an expected outcome
- * ({ sent: false }); any other failure throws — EmailAPIError exposes
- * .code and .status for branching.
+ * Renders a registered React Email template and sends it through Resend.
+ * Requires RESEND_API_KEY and RESEND_FROM_EMAIL to be set.
  */
 export async function sendTemplateEmail(
   templateName: string,
   to: string,
   options: SendTemplateEmailOptions = {}
 ): Promise<SendTemplateEmailResult> {
-  const apiKey = process.env['LOVABLE_API_KEY']
-  if (!apiKey) {
-    throw new Error('LOVABLE_API_KEY is not configured')
+  const apiKey = process.env['RESEND_API_KEY']
+  if (!apiKey || apiKey === 'your_resend_api_key_here') {
+    throw new Error('RESEND_API_KEY is not configured. Add it to your .env file.')
   }
+
+  const from = process.env['RESEND_FROM_EMAIL'] || `Samrik Solutions <info@samrik.co.in>`
 
   const template = TEMPLATES[templateName]
   if (!template) {
@@ -65,28 +57,43 @@ export async function sendTemplateEmail(
       ? template.subject(templateData)
       : template.subject
 
-  try {
-    await sendLovableEmail(
-      {
-        to: recipient,
-        from: `${SITE_NAME} <noreply@${FROM_DOMAIN}>`,
-        sender_domain: SENDER_DOMAIN,
-        subject,
-        html,
-        text,
-        purpose: 'transactional',
-        label: templateName,
-        idempotency_key: options.idempotencyKey || crypto.randomUUID(),
-        ...(options.replyTo ? { reply_to: options.replyTo } : {}),
-      },
-      { apiKey, sendUrl: process.env['LOVABLE_SEND_URL'] }
-    )
-  } catch (error) {
-    if (error instanceof EmailAPIError && error.code === 'recipient_suppressed') {
-      return { sent: false, reason: 'recipient_suppressed' }
-    }
-    throw error
+  const body: Record<string, any> = {
+    from,
+    to: [recipient],
+    subject,
+    html,
+    text,
+    headers: {
+      'X-Idempotency-Key': options.idempotencyKey || crypto.randomUUID(),
+    },
+  }
+  if (options.replyTo) {
+    body.reply_to = options.replyTo
   }
 
-  return { sent: true }
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify(body),
+  })
+
+  if (!response.ok) {
+    const errorText = await response.text()
+    let message = `Resend request failed (${response.status}): ${errorText}`
+    try {
+      const parsed = JSON.parse(errorText)
+      if (parsed?.message) {
+        message = parsed.message
+      }
+    } catch {
+      // keep raw text
+    }
+    throw new Error(message)
+  }
+
+  const result = await response.json() as { id?: string }
+  return { sent: true, id: result.id }
 }
