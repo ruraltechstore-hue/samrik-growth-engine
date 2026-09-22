@@ -94,6 +94,17 @@ const focusSteps = [
   { icon: ChartNoAxesCombined, label: "Grow", detail: "Pursue new opportunities" },
 ] as const;
 
+const ruralTechAreas: ReadonlyArray<{ icon: LucideIcon; title: string }> = [
+  { icon: Receipt, title: "Utility & Bill Payment Services" },
+  { icon: Landmark, title: "Financial Services" },
+  { icon: Building2, title: "Government & Digital Services" },
+  { icon: Plane, title: "Travel Services" },
+  { icon: ShoppingCart, title: "E-Commerce Services" },
+  { icon: BookOpen, title: "Online Learning Services" },
+  { icon: Monitor, title: "Digital Service Center Support" },
+  { icon: Lightbulb, title: "Rural Entrepreneurship" },
+];
+
 function Services() {
   return (
     <>
