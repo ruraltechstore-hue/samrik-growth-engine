@@ -97,7 +97,7 @@ const focusSteps = [
 function Services() {
   return (
     <>
-      <PageHero eyebrow="All Services" title="Our Sales & Educational Services" description="Explore business-focused sales solutions and practical learning designed for careers, entrepreneurship, and growth in the digital economy." />
+      <PageHero eyebrow="All Services" title="Our Sales, Educational & Rural Tech Services" description="Explore business-focused sales solutions, practical learning, and accessible rural digital services designed for careers, entrepreneurship, and community growth." />
 
       <section className="py-20 md:py-28">
         <div className="section-shell space-y-16">
