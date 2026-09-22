@@ -31,7 +31,8 @@ export const services = [
   },
   {
     title: "Educational Services",
-    description: "Provide practical digital and business learning across e-commerce, digital marketing, AI, sales, freelancing, entrepreneurship, and business growth.",
+    subtitle: "Practical Digital Skills for Career & Business Growth",
+    description: "Develop practical, industry-relevant skills across digital marketing, artificial intelligence, e-commerce, sales, entrepreneurship, freelancing, and business growth.",
   },
   {
     title: "Rural Tech Store",
