@@ -6,3 +6,4 @@
 - [x] Add unique metadata and preserve a branded 404 page
 - [x] Verify desktop and mobile layouts and key interactions
 - [x] Expand Educational Services with supplied digital-skills content and premium responsive presentation
+- [ ] Align Educational Services cards and detail content with the shared four-service design
