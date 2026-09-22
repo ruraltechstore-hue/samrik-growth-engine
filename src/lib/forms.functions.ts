@@ -11,17 +11,22 @@ export type PartnerData = z.infer<typeof partnerSchema>;
 
 async function deliverEnquiry(formType: string, senderName: string, senderEmail: string, rows: Array<{ label: string; value: string }>) {
   const idempotencyKey = `${formType.toLowerCase().replace(/\s+/g, "-")}-${Date.now()}-${crypto.randomUUID()}`;
-  // Notify the Samrik Solutions inbox; replies go straight to the sender.
-  await sendTemplateEmail("enquiry-notification", "info@samrik.co.in", {
-    templateData: { formType, name: senderName, rows },
-    idempotencyKey: `${idempotencyKey}-notify`,
-    replyTo: senderEmail,
-  });
-  // Confirm receipt to the sender. A suppressed sender is an expected no-op.
-  await sendTemplateEmail("enquiry-confirmation", senderEmail, {
-    templateData: { name: senderName.split(" ")[0] ?? senderName, formType: formType.toLowerCase() },
-    idempotencyKey: `${idempotencyKey}-confirm`,
-  });
+  try {
+    // Notify the Samrik Solutions inbox; replies go straight to the sender.
+    await sendTemplateEmail("enquiry-notification", "info@samrik.co.in", {
+      templateData: { formType, name: senderName, rows },
+      idempotencyKey: `${idempotencyKey}-notify`,
+      replyTo: senderEmail,
+    });
+    // Confirm receipt to the sender. A suppressed sender is an expected no-op.
+    await sendTemplateEmail("enquiry-confirmation", senderEmail, {
+      templateData: { name: senderName.split(" ")[0] ?? senderName, formType: formType.toLowerCase() },
+      idempotencyKey: `${idempotencyKey}-confirm`,
+    });
+  } catch (error) {
+    console.error("email send failed", error instanceof Error ? { name: error.name, message: error.message, code: (error as { code?: string }).code } : error);
+    throw error;
+  }
 }
 
 export const submitContactForm = createServerFn({ method: "POST" })
