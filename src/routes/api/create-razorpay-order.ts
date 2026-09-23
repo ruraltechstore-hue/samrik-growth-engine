@@ -7,6 +7,8 @@ const bodySchema = z.object({
   customerName: z.string().trim().min(2).max(100),
   customerEmail: z.string().trim().email().max(255),
   customerPhone: z.string().trim().regex(/^[0-9+\-\s()]{7,20}$/, "Invalid phone number"),
+  college: z.string().trim().min(2).max(180).optional(),
+  course: z.string().trim().min(2).max(150).optional(),
 });
 
 export const Route = createFileRoute("/api/create-razorpay-order")({
@@ -28,6 +30,10 @@ export const Route = createFileRoute("/api/create-razorpay-order")({
         if (!plan) {
           return Response.json({ error: "The selected plan is not available." }, { status: 400 });
         }
+        const isInternship = plan.id === "internship-stage-1" || plan.id === "internship-stage-2";
+        if (isInternship && (!result.data.college || !result.data.course)) {
+          return Response.json({ error: "Please enter your college and course details." }, { status: 400 });
+        }
 
         const razorpayResponse = await fetch("https://api.razorpay.com/v1/orders", {
           method: "POST",
@@ -44,6 +50,8 @@ export const Route = createFileRoute("/api/create-razorpay-order")({
               customerName: result.data.customerName,
               customerEmail: result.data.customerEmail,
               customerPhone: result.data.customerPhone,
+              ...(result.data.college ? { college: result.data.college } : {}),
+              ...(result.data.course ? { course: result.data.course } : {}),
             },
           }),
         });
@@ -60,6 +68,9 @@ export const Route = createFileRoute("/api/create-razorpay-order")({
           customerName: result.data.customerName,
           customerEmail: result.data.customerEmail,
           customerPhone: result.data.customerPhone,
+          college: result.data.college,
+          course: result.data.course,
+          internshipStage: isInternship ? plan.name : undefined,
           plan: plan.name,
           amountPaise: plan.amountPaise,
           currency: "INR",

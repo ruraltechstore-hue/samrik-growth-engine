@@ -12,6 +12,9 @@ export interface RuralOrderRecord {
   customerName: string;
   customerEmail: string;
   customerPhone: string;
+  college?: string;
+  course?: string;
+  internshipStage?: string;
   plan: string;
   amountPaise: number;
   currency: "INR";
@@ -34,7 +37,7 @@ const records = new Map<string, RuralOrderRecord>();
 function audit(record: RuralOrderRecord) {
   // Audit trail so orders survive in the server log even without a database.
   console.log(
-    `[rural-order] ${record.status} plan=${record.plan} amountPaise=${record.amountPaise} order=${record.razorpayOrderId} payment=${record.razorpayPaymentId ?? "-"} at=${record.updatedAt}`,
+    `[payment-order] ${record.status} plan=${record.plan} amountPaise=${record.amountPaise} order=${record.razorpayOrderId} payment=${record.razorpayPaymentId ?? "-"} at=${record.updatedAt}`,
   );
 }
 
