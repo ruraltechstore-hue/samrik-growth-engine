@@ -122,8 +122,8 @@ export const serviceDetails = {
       "Our logistics sales support is built around B2B relationship building. We help you identify the right prospects, initiate conversations, and support your business-development process.",
       "From customer prospecting to follow-up and market expansion, our approach is designed to help logistics companies build a consistent pipeline of opportunities.",
     ],
-    ctaPrimary: { label: "Grow Your Logistics Business", to: "/partner" },
-    ctaSecondary: undefined,
+    ctaPrimary: { label: "View Franchise Plans", to: "#franchise-plans" },
+    ctaSecondary: { label: "Partner With Us", to: "/partner" },
     right: {
       type: "checklist",
       title: "What we can support",
