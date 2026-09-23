@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { Linkedin, Menu, MoveUpRight } from "lucide-react";
+import { Menu, MoveUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { Brand } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { navigation, services, siteConfig } from "@/config/site";
+import { legalNavigation, navigation, services, siteConfig } from "@/config/site";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
@@ -37,12 +37,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <main>{children}</main>
       <footer className="bg-hero text-hero-foreground">
         <div className="section-shell grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-4">
-          <div><Brand inverse /><p className="mt-5 max-w-xs text-sm leading-7 text-hero-foreground/70">{siteConfig.tagline}</p></div>
           <FooterList title="Company" items={navigation.map((item) => ({ label: item.label, to: item.to }))} />
           <FooterList title="Services" items={[...services.map((item) => ({ label: item.title, to: `/services/${item.slug}` })), { label: "Lead Generation", to: "/services" }, { label: "Business Development", to: "/services" }]} />
-          <div><h2 className="font-display text-sm font-bold uppercase tracking-wider">Contact</h2><div className="mt-5 space-y-3 text-sm text-hero-foreground/70"><p>{siteConfig.email}</p><p>{siteConfig.phone}</p><p>{siteConfig.address}</p></div><div className="mt-6 flex gap-2"><Button variant="inverse" size="icon" aria-label="LinkedIn placeholder"><Linkedin /></Button><Button variant="inverse" size="icon" aria-label="Other social profile placeholder"><MoveUpRight /></Button></div></div>
+          <FooterList title="Legal" items={legalNavigation} />
+          <div><h2 className="font-display text-sm font-bold uppercase tracking-wider">Contact</h2><dl className="mt-5 space-y-4 text-sm text-hero-foreground/70"><div><dt className="font-semibold text-hero-foreground">Email</dt><dd className="mt-1"><a className="transition-colors hover:text-hero-foreground" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></dd></div><div><dt className="font-semibold text-hero-foreground">Phone</dt><dd className="mt-1"><a className="transition-colors hover:text-hero-foreground" href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a></dd></div><div><dt className="font-semibold text-hero-foreground">Address</dt><dd className="mt-1">{siteConfig.address}</dd></div></dl></div>
         </div>
-        <div className="border-t border-hero-foreground/15"><div className="section-shell py-5 text-xs text-hero-foreground/60">© 2026 Samrik Solutions. All rights reserved.</div></div>
+        <div className="border-t border-hero-foreground/15"><div className="section-shell flex flex-col gap-4 py-5 text-xs text-hero-foreground/60 lg:flex-row lg:items-center lg:justify-between"><p>© 2026 Samrik Solutions. All rights reserved.</p><nav aria-label="Legal navigation"><ul className="flex flex-wrap gap-x-3 gap-y-2">{legalNavigation.map((item, index) => <li key={`bottom-${item.to}`} className="flex items-center gap-3">{index > 0 && <span aria-hidden="true">|</span>}<Link to={item.to} className="transition-colors hover:text-hero-foreground">{item.label}</Link></li>)}</ul></nav></div></div>
       </footer>
     </div>
   );

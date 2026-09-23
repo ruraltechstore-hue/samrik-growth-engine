@@ -20,6 +20,13 @@ export const navigation = [
   { label: "Contact Us", to: "/contact" },
 ] as const;
 
+export const legalNavigation = [
+  { label: "Privacy Policy", to: "/privacy-policy" },
+  { label: "Terms & Conditions", to: "/terms-and-conditions" },
+  { label: "Refunds & Cancellations", to: "/refunds-cancellations" },
+  { label: "Cookies Policy", to: "/cookies-policy" },
+] as const;
+
 export const services = [
   {
     slug: "saas-sales",
