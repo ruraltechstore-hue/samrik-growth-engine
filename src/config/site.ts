@@ -3,6 +3,7 @@ export const siteConfig = {
   tagline: "Driving growth through smarter sales solutions.",
   email: "info@samrik.co.in",
   phone: "9392207839",
+  whatsappUrl: "https://wa.me/919392207839",
   address: "Bahadurpally, Hyderabad",
   hours: ["Monday – Friday", "9:00 AM – 6:00 PM"],
   socials: {
