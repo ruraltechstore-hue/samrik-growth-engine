@@ -17,6 +17,8 @@ import {
 } from "@/lib/forms.functions";
 import { internshipPlans, type InternshipPlan, type PaidInternshipPlan } from "@/lib/internship-plans";
 
+type PricingInternshipPlan = Extract<InternshipPlan, { payment: false }>;
+
 const registrationSchema = z.object({
   customerName: z.string().trim().min(2, "Enter your full name").max(100),
   customerEmail: z.string().trim().email("Enter a valid email address").max(255),
@@ -108,9 +110,11 @@ export function InternshipPlansSection() {
                   </div>
                 ))}
               </div>
-              <Button variant={plan.payment ? "accent" : "outline"} size="lg" className="mt-auto w-full pt-0" onClick={() => openPlan(plan)}>
-                {plan.payment ? "Register Now" : "Request Pricing"}
-              </Button>
+              <div className="mt-auto pt-8">
+                <Button variant={plan.payment ? "accent" : "outline"} size="lg" className="w-full" onClick={() => openPlan(plan)}>
+                  {plan.payment ? "Register Now" : "Request Pricing"}
+                </Button>
+              </div>
             </article>
           ))}
         </div>
@@ -121,7 +125,7 @@ export function InternshipPlansSection() {
           {activePlan?.payment ? (
             <PaymentRegistration plan={activePlan} stage={paymentStage} setStage={setPaymentStage} onClose={() => setActivePlan(null)} />
           ) : activePlan ? (
-            <PricingRequest plan={activePlan} />
+            <PricingRequest plan={activePlan as PricingInternshipPlan} />
           ) : null}
         </DialogContent>
       </Dialog>
@@ -210,7 +214,7 @@ function PaymentRegistration({ plan, stage, setStage, onClose }: { plan: PaidInt
   );
 }
 
-function PricingRequest({ plan }: { plan: InternshipPlan }) {
+function PricingRequest({ plan }: { plan: PricingInternshipPlan }) {
   const submit = useServerFn(submitInternshipPricingRequest);
   const [sent, setSent] = useState(false);
   const [submitError, setSubmitError] = useState<string>();
