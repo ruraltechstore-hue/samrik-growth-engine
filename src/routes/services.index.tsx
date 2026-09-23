@@ -37,7 +37,7 @@ function ServicesIndex() {
                   <span className="grid size-12 place-items-center rounded-md bg-primary text-primary-foreground"><Icon /></span>
                   <h3 className="mt-8 font-display text-2xl font-bold">{service.title}</h3>
                   <div className="mt-3 min-h-12">
-                    {"subtitle" in service && <p className="text-sm font-semibold leading-6 text-secondary">{service.subtitle}</p>}
+                    {"subtitle" in service && <p className="text-sm font-semibold leading-6 text-muted-foreground">{service.subtitle}</p>}
                   </div>
                   <p className="mt-3 text-sm leading-7 text-muted-foreground">{service.description}</p>
                   <Button asChild variant="link" className="mt-auto h-auto justify-start px-0 pt-6">
