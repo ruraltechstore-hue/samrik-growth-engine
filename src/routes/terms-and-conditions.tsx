@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { EditablePlaceholder, LegalContact, LegalPage, LegalSection } from "@/components/legal-page";
+import { LegalContact, LegalPage, LegalSection } from "@/components/legal-page";
 
 export const Route = createFileRoute("/terms-and-conditions")({
   head: () => ({
@@ -27,7 +27,6 @@ function TermsAndConditions() {
     <LegalSection title="Third-Party Services and Links"><p>Third-party services or links may be provided for convenience. Their availability, content, and use may be subject to the third party's own terms and policies.</p></LegalSection>
     <LegalSection title="Limitation of Liability"><p>To the extent permitted by applicable law, Samrik Solutions will not be liable for indirect, incidental, special, or consequential loss arising from use of, or inability to use, this website. Nothing in these terms excludes or limits liability that cannot lawfully be excluded or limited.</p></LegalSection>
     <LegalSection title="Changes to Terms"><p>Samrik Solutions may update these Terms & Conditions from time to time. Updated terms will be posted on this page with a revised last-updated date.</p></LegalSection>
-    <LegalSection title="Governing Law"><p><EditablePlaceholder>Governing Law: [Insert applicable state/country jurisdiction]</EditablePlaceholder></p></LegalSection>
     <LegalSection title="Contact"><p>For questions about these terms, contact <LegalContact />.</p></LegalSection>
   </LegalPage>;
 }

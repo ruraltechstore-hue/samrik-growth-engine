@@ -27,7 +27,7 @@ export function LegalPage({
             </article>
             <div className="mt-14 border-t border-border pt-6 text-sm leading-7 text-muted-foreground">
               <p>This page provides general website information. Specific services may also be governed by a separate written agreement.</p>
-              <p className="mt-2 font-semibold text-foreground">Last Updated: [Insert Date]</p>
+              <p className="mt-2 font-semibold text-foreground">Last Updated: 23-09-2026</p>
             </div>
           </div>
         </div>
