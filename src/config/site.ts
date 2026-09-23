@@ -46,7 +46,7 @@ export const services = [
   },
   {
     slug: "rural-tech-store",
-    title: "Rural Tech Store",
+    title: "Rural Tech Store Services",
     description: "Empowering rural and semi-urban communities through digital services and local entrepreneurship opportunities.",
   },
 ] as const;

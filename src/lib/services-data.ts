@@ -166,13 +166,13 @@ export const serviceDetails = {
   "rural-tech-store": {
     slug: "rural-tech-store",
     icon: Store,
-    title: "Rural Tech Store",
+    title: "Rural Tech Store Services",
     eyebrow: "Sales service 04",
     description:
       "Digital services and rural entrepreneurship opportunities for rural and semi-urban communities.",
     subheading: "Digital Services & Rural Entrepreneurship",
     paragraphs: [
-      "Rural Tech Store focuses on enabling access to essential digital services in rural and semi-urban communities while creating opportunities for local entrepreneurs to establish and operate digital service centers.",
+      "Rural Tech Store Services focuses on enabling access to essential digital services in rural and semi-urban communities while creating opportunities for local entrepreneurs to establish and operate digital service centers.",
       "The service model brings multiple digital services together through a single platform, helping individuals and communities access services conveniently while supporting local digital entrepreneurship.",
     ],
     ctaPrimary: { label: "View Plans & Opportunities", to: "#plans" },

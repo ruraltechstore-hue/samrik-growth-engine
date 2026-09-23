@@ -162,22 +162,22 @@ const faqCategories: Array<{
     ],
   },
   {
-    category: "Rural Tech Store",
+    category: "Rural Tech Store Services",
     items: [
       {
-        q: "What is Rural Tech Store?",
-        a: "Rural Tech Store is a digital services and rural entrepreneurship initiative that enables access to essential digital services in rural and semi-urban communities while creating opportunities for local entrepreneurs to establish and operate digital service centers.",
+        q: "What is Rural Tech Store Services?",
+        a: "Rural Tech Store Services is a digital services and rural entrepreneurship initiative that enables access to essential digital services in rural and semi-urban communities while creating opportunities for local entrepreneurs to establish and operate digital service centers.",
       },
       {
-        q: "Who can join Rural Tech Store?",
+        q: "Who can join Rural Tech Store Services?",
         a: "Entrepreneurs, local business owners, and individuals interested in operating digital service centers in rural or semi-urban areas can explore the available plans.",
       },
       {
-        q: "What plans are available under Rural Tech Store?",
-        a: "Rural Tech Store offers Agent, Distributor, and Super Distributor participation plans. Plan details and fees are available under Services → Rural Tech Store.",
+        q: "What plans are available under Rural Tech Store Services?",
+        a: "Rural Tech Store Services offers Agent, Distributor, and Super Distributor participation plans. Plan details and fees are available under Services → Rural Tech Store Services.",
       },
       {
-        q: "What kind of support is provided to Rural Tech Store partners?",
+        q: "What kind of support is provided to Rural Tech Store Services partners?",
         a: "Support can include setup guidance, operational information, training resources, marketing assistance, and ongoing coordination depending on the selected plan.",
       },
     ],

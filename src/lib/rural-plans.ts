@@ -1,5 +1,5 @@
 /**
- * Rural Tech Store plan catalogue.
+ * Rural Tech Store Services plan catalogue.
  *
  * `amountPaise` is the smallest-currency-unit value Razorpay requires. It is
  * NEVER shown to customers and NEVER accepted from the browser — the server
@@ -17,7 +17,7 @@ export const ruralPlans = [
       "Personal dashboard and wallet functionality",
       "Commission opportunities on eligible transactions",
       "Training and support as applicable",
-      "Access to the Rural Tech Store ecosystem",
+      "Access to the Rural Tech Store Services ecosystem",
     ],
   },
   {
@@ -46,7 +46,7 @@ export const ruralPlans = [
       "Ability to manage a larger retailer/user network as applicable",
       "Higher-level commission opportunities",
       "Territory-level opportunities where applicable",
-      "Access to the Rural Tech Store ecosystem",
+      "Access to the Rural Tech Store Services ecosystem",
       "Business and support resources as applicable",
     ],
   },
