@@ -110,3 +110,34 @@ function ServiceItemGrid({ items }: { items: ReadonlyArray<{ icon: LucideIcon; t
     </div>
   );
 }
+
+function CtaButton({
+  to,
+  variant,
+  children,
+  icon,
+}: {
+  to: string;
+  variant: "accent" | "outline";
+  children: React.ReactNode;
+  icon?: boolean;
+}) {
+  if (to.startsWith("#")) {
+    return (
+      <Button asChild variant={variant} size="lg">
+        <a href={to}>
+          {children}
+          {icon && <ArrowRight />}
+        </a>
+      </Button>
+    );
+  }
+  return (
+    <Button asChild variant={variant} size="lg">
+      <Link to={to as any}>
+        {children}
+        {icon && <ArrowRight />}
+      </Link>
+    </Button>
+  );
+}
