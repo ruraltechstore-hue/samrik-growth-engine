@@ -41,15 +41,13 @@ export function ServiceDetailPage({ slug }: ServiceDetailPageProps) {
                 </p>
               ))}
               <div className="mt-7 flex flex-wrap gap-3">
-                <Button asChild variant="accent" size="lg">
-                  <Link to={service.ctaPrimary.to}>
-                    {service.ctaPrimary.label} <ArrowRight />
-                  </Link>
-                </Button>
+                <CtaButton to={service.ctaPrimary.to} variant="accent" icon>
+                  {service.ctaPrimary.label}
+                </CtaButton>
                 {service.ctaSecondary && (
-                  <Button asChild variant="outline" size="lg">
-                    <Link to={service.ctaSecondary.to}>{service.ctaSecondary.label}</Link>
-                  </Button>
+                  <CtaButton to={service.ctaSecondary.to} variant="outline">
+                    {service.ctaSecondary.label}
+                  </CtaButton>
                 )}
               </div>
             </div>
