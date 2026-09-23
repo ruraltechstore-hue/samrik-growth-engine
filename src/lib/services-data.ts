@@ -38,10 +38,10 @@ export interface ServiceDetail {
   title: string;
   eyebrow: string;
   description: string;
-  subheading?: string;
+  subheading: string | undefined;
   paragraphs: readonly string[];
   ctaPrimary: { label: string; to: string };
-  ctaSecondary?: { label: string; to: string };
+  ctaSecondary: { label: string; to: string } | undefined;
   right: ServiceRight;
 }
 
@@ -87,11 +87,13 @@ export const serviceDetails = {
     eyebrow: "Sales service 01",
     description:
       "Samrik Solutions supports SaaS businesses in reaching potential customers and creating new sales opportunities.",
+    subheading: undefined,
     paragraphs: [
       "Our SaaS sales support helps software companies identify prospects, communicate value, and move opportunities through the sales pipeline. We focus on understanding your product and ideal customer profile so outreach is relevant and professional.",
       "Whether you need lead generation, appointment setting, or sales pipeline support, we work as an extension of your team to help you grow your customer base.",
     ],
     ctaPrimary: { label: "Discuss Your SaaS Sales Needs", to: "/partner" },
+    ctaSecondary: undefined,
     right: {
       type: "checklist",
       title: "What we can support",
@@ -115,11 +117,13 @@ export const serviceDetails = {
     eyebrow: "Sales service 02",
     description:
       "We help logistics and supply-chain businesses connect with potential customers and identify new business opportunities.",
+    subheading: undefined,
     paragraphs: [
       "Our logistics sales support is built around B2B relationship building. We help you identify the right prospects, initiate conversations, and support your business-development process.",
       "From customer prospecting to follow-up and market expansion, our approach is designed to help logistics companies build a consistent pipeline of opportunities.",
     ],
     ctaPrimary: { label: "Grow Your Logistics Business", to: "/partner" },
+    ctaSecondary: undefined,
     right: {
       type: "checklist",
       title: "What we can support",
@@ -172,6 +176,7 @@ export const serviceDetails = {
       "The service model brings multiple digital services together through a single platform, helping individuals and communities access services conveniently while supporting local digital entrepreneurship.",
     ],
     ctaPrimary: { label: "Explore Rural Tech Store", to: "/partner" },
+    ctaSecondary: undefined,
     right: {
       type: "grid",
       title: "Key Service Areas",
