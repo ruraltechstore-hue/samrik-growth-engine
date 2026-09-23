@@ -79,7 +79,7 @@ const audiences: ServiceRight & { type: "grid" } = {
   ],
 };
 
-export const serviceDetails: Record<string, ServiceDetail> = {
+export const serviceDetails = {
   "saas-sales": {
     slug: "saas-sales",
     icon: Boxes,
@@ -187,6 +187,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       ],
     },
   },
-};
+} as const satisfies Record<string, ServiceDetail>;
 
 export type ServiceSlug = keyof typeof serviceDetails;
+
