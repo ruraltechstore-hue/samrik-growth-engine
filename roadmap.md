@@ -11,3 +11,6 @@
 - [x] Wire forms to send real emails via Resend (tested successfully with info@samrik.co.in)
 - [x] Add four legal pages and rebuild the shared footer with Legal links
 - [ ] Verify samrik.co.in domain in Resend dashboard for best deliverability (recommended next step)
+- [x] Add Rural Tech Store plans (Agent/Distributor/Super Distributor) with server-side Razorpay order creation, signature verification, and success/failure/cancelled states
+- [ ] Add RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET so live payments can run
+- [ ] Connect MySQL/PostgreSQL to persist Rural Tech Store orders (store interface ready in src/lib/rural-orders.server.ts)

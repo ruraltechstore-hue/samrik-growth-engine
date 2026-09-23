@@ -7,9 +7,10 @@ import { serviceDetails, type ServiceSlug } from "@/lib/services-data";
 
 interface ServiceDetailPageProps {
   slug: ServiceSlug;
+  extra?: React.ReactNode;
 }
 
-export function ServiceDetailPage({ slug }: ServiceDetailPageProps) {
+export function ServiceDetailPage({ slug, extra }: ServiceDetailPageProps) {
   const service = serviceDetails[slug];
   const Icon = service.icon;
 
@@ -85,6 +86,7 @@ export function ServiceDetailPage({ slug }: ServiceDetailPageProps) {
           </article>
         </div>
       </section>
+      {extra}
       <CTASection />
     </>
   );

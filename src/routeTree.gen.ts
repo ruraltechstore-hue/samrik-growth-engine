@@ -24,6 +24,9 @@ import { Route as ServicesEducationalServicesRouteImport } from './routes/servic
 import { Route as ServicesLogisticsSalesRouteImport } from './routes/services.logistics-sales'
 import { Route as ServicesRuralTechStoreRouteImport } from './routes/services.rural-tech-store'
 import { Route as ServicesSaasSalesRouteImport } from './routes/services.saas-sales'
+import { Route as ApiPublicCancelRazorpayOrderRouteImport } from './routes/api/public/cancel-razorpay-order'
+import { Route as ApiPublicCreateRazorpayOrderRouteImport } from './routes/api/public/create-razorpay-order'
+import { Route as ApiPublicVerifyRazorpayPaymentRouteImport } from './routes/api/public/verify-razorpay-payment'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
@@ -102,6 +105,24 @@ const ServicesSaasSalesRoute = ServicesSaasSalesRouteImport.update({
   path: '/saas-sales',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ApiPublicCancelRazorpayOrderRoute =
+  ApiPublicCancelRazorpayOrderRouteImport.update({
+    id: '/api/public/cancel-razorpay-order',
+    path: '/api/public/cancel-razorpay-order',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicCreateRazorpayOrderRoute =
+  ApiPublicCreateRazorpayOrderRouteImport.update({
+    id: '/api/public/create-razorpay-order',
+    path: '/api/public/create-razorpay-order',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicVerifyRazorpayPaymentRoute =
+  ApiPublicVerifyRazorpayPaymentRouteImport.update({
+    id: '/api/public/verify-razorpay-payment',
+    path: '/api/public/verify-razorpay-payment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const LovableEmailTransactionalPreviewRoute =
   LovableEmailTransactionalPreviewRouteImport.update({
     id: '/lovable/email/transactional/preview',
@@ -125,6 +146,9 @@ export interface FileRoutesByFullPath {
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
   '/services/saas-sales': typeof ServicesSaasSalesRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/public/cancel-razorpay-order': typeof ApiPublicCancelRazorpayOrderRoute
+  '/api/public/create-razorpay-order': typeof ApiPublicCreateRazorpayOrderRoute
+  '/api/public/verify-razorpay-payment': typeof ApiPublicVerifyRazorpayPaymentRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
@@ -142,6 +166,9 @@ export interface FileRoutesByTo {
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
   '/services/saas-sales': typeof ServicesSaasSalesRoute
   '/services': typeof ServicesIndexRoute
+  '/api/public/cancel-razorpay-order': typeof ApiPublicCancelRazorpayOrderRoute
+  '/api/public/create-razorpay-order': typeof ApiPublicCreateRazorpayOrderRoute
+  '/api/public/verify-razorpay-payment': typeof ApiPublicVerifyRazorpayPaymentRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
@@ -161,6 +188,9 @@ export interface FileRoutesById {
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
   '/services/saas-sales': typeof ServicesSaasSalesRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/public/cancel-razorpay-order': typeof ApiPublicCancelRazorpayOrderRoute
+  '/api/public/create-razorpay-order': typeof ApiPublicCreateRazorpayOrderRoute
+  '/api/public/verify-razorpay-payment': typeof ApiPublicVerifyRazorpayPaymentRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
@@ -181,6 +211,9 @@ export interface FileRouteTypes {
     | '/services/rural-tech-store'
     | '/services/saas-sales'
     | '/services/'
+    | '/api/public/cancel-razorpay-order'
+    | '/api/public/create-razorpay-order'
+    | '/api/public/verify-razorpay-payment'
     | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -198,6 +231,9 @@ export interface FileRouteTypes {
     | '/services/rural-tech-store'
     | '/services/saas-sales'
     | '/services'
+    | '/api/public/cancel-razorpay-order'
+    | '/api/public/create-razorpay-order'
+    | '/api/public/verify-razorpay-payment'
     | '/lovable/email/transactional/preview'
   id:
     | '__root__'
@@ -216,6 +252,9 @@ export interface FileRouteTypes {
     | '/services/rural-tech-store'
     | '/services/saas-sales'
     | '/services/'
+    | '/api/public/cancel-razorpay-order'
+    | '/api/public/create-razorpay-order'
+    | '/api/public/verify-razorpay-payment'
     | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
@@ -230,6 +269,9 @@ export interface RootRouteChildren {
   RefundsCancellationsRoute: typeof RefundsCancellationsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  ApiPublicCancelRazorpayOrderRoute: typeof ApiPublicCancelRazorpayOrderRoute
+  ApiPublicCreateRazorpayOrderRoute: typeof ApiPublicCreateRazorpayOrderRoute
+  ApiPublicVerifyRazorpayPaymentRoute: typeof ApiPublicVerifyRazorpayPaymentRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
@@ -340,6 +382,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSaasSalesRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/api/public/cancel-razorpay-order': {
+      id: '/api/public/cancel-razorpay-order'
+      path: '/api/public/cancel-razorpay-order'
+      fullPath: '/api/public/cancel-razorpay-order'
+      preLoaderRoute: typeof ApiPublicCancelRazorpayOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/create-razorpay-order': {
+      id: '/api/public/create-razorpay-order'
+      path: '/api/public/create-razorpay-order'
+      fullPath: '/api/public/create-razorpay-order'
+      preLoaderRoute: typeof ApiPublicCreateRazorpayOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/verify-razorpay-payment': {
+      id: '/api/public/verify-razorpay-payment'
+      path: '/api/public/verify-razorpay-payment'
+      fullPath: '/api/public/verify-razorpay-payment'
+      preLoaderRoute: typeof ApiPublicVerifyRazorpayPaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lovable/email/transactional/preview': {
       id: '/lovable/email/transactional/preview'
       path: '/lovable/email/transactional/preview'
@@ -381,6 +444,9 @@ const rootRouteChildren: RootRouteChildren = {
   RefundsCancellationsRoute: RefundsCancellationsRoute,
   ServicesRoute: ServicesRouteWithChildren,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
+  ApiPublicCancelRazorpayOrderRoute: ApiPublicCancelRazorpayOrderRoute,
+  ApiPublicCreateRazorpayOrderRoute: ApiPublicCreateRazorpayOrderRoute,
+  ApiPublicVerifyRazorpayPaymentRoute: ApiPublicVerifyRazorpayPaymentRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport

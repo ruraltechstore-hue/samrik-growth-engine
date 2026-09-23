@@ -175,7 +175,7 @@ export const serviceDetails = {
       "Rural Tech Store focuses on enabling access to essential digital services in rural and semi-urban communities while creating opportunities for local entrepreneurs to establish and operate digital service centers.",
       "The service model brings multiple digital services together through a single platform, helping individuals and communities access services conveniently while supporting local digital entrepreneurship.",
     ],
-    ctaPrimary: { label: "Explore Rural Tech Store", to: "/partner" },
+    ctaPrimary: { label: "View Plans & Opportunities", to: "#plans" },
     ctaSecondary: undefined,
     right: {
       type: "grid",
