@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceDetailPage } from "@/components/service-detail";
+import { LogisticsPlansSection } from "@/components/logistics-plans";
 
 export const Route = createFileRoute("/services/logistics-sales")({
   head: () => ({
@@ -14,5 +15,5 @@ export const Route = createFileRoute("/services/logistics-sales")({
     ],
     links: [{ rel: "canonical", href: "/services/logistics-sales" }],
   }),
-  component: () => <ServiceDetailPage slug="logistics-sales" />,
+  component: () => <ServiceDetailPage slug="logistics-sales" extra={<LogisticsPlansSection />} />,
 });
