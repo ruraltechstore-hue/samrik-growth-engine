@@ -31,7 +31,7 @@ function ServicesIndex() {
           <SectionHeading eyebrow="Our Services" title="Solutions Designed for Business Growth" align="center" />
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {services.map((service, index) => {
-              const Icon = serviceIcons[index];
+              const Icon = serviceIcons[index] ?? Boxes;
               return (
                 <article key={service.slug} className="rise-in flex h-full flex-col border border-border bg-card p-7 shadow-sm transition-transform duration-300 hover:-translate-y-1">
                   <span className="grid size-12 place-items-center rounded-md bg-primary text-primary-foreground"><Icon /></span>
