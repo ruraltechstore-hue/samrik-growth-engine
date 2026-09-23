@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { EditablePlaceholder, LegalContact, LegalPage, LegalSection } from "@/components/legal-page";
+import { LegalContact, LegalPage, LegalSection } from "@/components/legal-page";
 
 export const Route = createFileRoute("/terms-and-conditions")({
   head: () => ({
