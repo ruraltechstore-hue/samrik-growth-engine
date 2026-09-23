@@ -14,3 +14,4 @@
 - [x] Add Rural Tech Store plans (Agent/Distributor/Super Distributor) with server-side Razorpay order creation, signature verification, and success/failure/cancelled states
 - [ ] Add RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET so live payments can run
 - [ ] Connect MySQL/PostgreSQL to persist Rural Tech Store orders (store interface ready in src/lib/rural-orders.server.ts)
+- [ ] Add Logistics Services franchise plans with secure Razorpay checkout and verified eLocal Store plan details
