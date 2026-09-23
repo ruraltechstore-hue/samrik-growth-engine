@@ -15,5 +15,5 @@ export const Route = createFileRoute("/services/rural-tech-store")({
     ],
     links: [{ rel: "canonical", href: "/services/rural-tech-store" }],
   }),
-  component: () => <ServiceDetailPage slug="rural-tech-store" />,
+  component: () => <ServiceDetailPage slug="rural-tech-store" extra={<RuralPlansSection />} />,
 });
