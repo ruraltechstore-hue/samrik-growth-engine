@@ -22,19 +22,23 @@ export const navigation = [
 
 export const services = [
   {
+    slug: "saas-sales",
     title: "SaaS Sales",
     description: "Help SaaS businesses generate leads, acquire customers, and expand their sales reach.",
   },
   {
+    slug: "logistics-sales",
     title: "Logistics Sales",
     description: "Support logistics businesses with customer acquisition, sales outreach, and business development.",
   },
   {
+    slug: "educational-services",
     title: "Educational Services",
     subtitle: "Practical Digital Skills for Career & Business Growth",
     description: "Develop practical, industry-relevant skills across digital marketing, artificial intelligence, e-commerce, sales, entrepreneurship, freelancing, and business growth.",
   },
   {
+    slug: "rural-tech-store",
     title: "Rural Tech Store",
     description: "Empowering rural and semi-urban communities through digital services and local entrepreneurship opportunities.",
   },

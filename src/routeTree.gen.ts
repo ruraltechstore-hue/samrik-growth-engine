@@ -15,6 +15,11 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PartnerRouteImport } from './routes/partner'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesEducationalServicesRouteImport } from './routes/services.educational-services'
+import { Route as ServicesLogisticsSalesRouteImport } from './routes/services.logistics-sales'
+import { Route as ServicesRuralTechStoreRouteImport } from './routes/services.rural-tech-store'
+import { Route as ServicesSaasSalesRouteImport } from './routes/services.saas-sales'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +52,32 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesEducationalServicesRoute =
+  ServicesEducationalServicesRouteImport.update({
+    id: '/educational-services',
+    path: '/educational-services',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesLogisticsSalesRoute = ServicesLogisticsSalesRouteImport.update({
+  id: '/logistics-sales',
+  path: '/logistics-sales',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesRuralTechStoreRoute = ServicesRuralTechStoreRouteImport.update({
+  id: '/rural-tech-store',
+  path: '/rural-tech-store',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSaasSalesRoute = ServicesSaasSalesRouteImport.update({
+  id: '/saas-sales',
+  path: '/saas-sales',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const LovableEmailTransactionalPreviewRoute =
   LovableEmailTransactionalPreviewRouteImport.update({
     id: '/lovable/email/transactional/preview',
@@ -60,7 +91,12 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/partner': typeof PartnerRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/educational-services': typeof ServicesEducationalServicesRoute
+  '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
+  '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
+  '/services/saas-sales': typeof ServicesSaasSalesRoute
+  '/services/': typeof ServicesIndexRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
@@ -69,7 +105,11 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/partner': typeof PartnerRoute
-  '/services': typeof ServicesRoute
+  '/services/educational-services': typeof ServicesEducationalServicesRoute
+  '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
+  '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
+  '/services/saas-sales': typeof ServicesSaasSalesRoute
+  '/services': typeof ServicesIndexRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
@@ -79,7 +119,12 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/partner': typeof PartnerRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/educational-services': typeof ServicesEducationalServicesRoute
+  '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
+  '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
+  '/services/saas-sales': typeof ServicesSaasSalesRoute
+  '/services/': typeof ServicesIndexRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
@@ -91,6 +136,11 @@ export interface FileRouteTypes {
     | '/faq'
     | '/partner'
     | '/services'
+    | '/services/educational-services'
+    | '/services/logistics-sales'
+    | '/services/rural-tech-store'
+    | '/services/saas-sales'
+    | '/services/'
     | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +149,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/partner'
+    | '/services/educational-services'
+    | '/services/logistics-sales'
+    | '/services/rural-tech-store'
+    | '/services/saas-sales'
     | '/services'
     | '/lovable/email/transactional/preview'
   id:
@@ -109,6 +163,11 @@ export interface FileRouteTypes {
     | '/faq'
     | '/partner'
     | '/services'
+    | '/services/educational-services'
+    | '/services/logistics-sales'
+    | '/services/rural-tech-store'
+    | '/services/saas-sales'
+    | '/services/'
     | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
@@ -118,7 +177,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   PartnerRoute: typeof PartnerRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
@@ -166,6 +225,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/educational-services': {
+      id: '/services/educational-services'
+      path: '/educational-services'
+      fullPath: '/services/educational-services'
+      preLoaderRoute: typeof ServicesEducationalServicesRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/logistics-sales': {
+      id: '/services/logistics-sales'
+      path: '/logistics-sales'
+      fullPath: '/services/logistics-sales'
+      preLoaderRoute: typeof ServicesLogisticsSalesRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/rural-tech-store': {
+      id: '/services/rural-tech-store'
+      path: '/rural-tech-store'
+      fullPath: '/services/rural-tech-store'
+      preLoaderRoute: typeof ServicesRuralTechStoreRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/saas-sales': {
+      id: '/services/saas-sales'
+      path: '/saas-sales'
+      fullPath: '/services/saas-sales'
+      preLoaderRoute: typeof ServicesSaasSalesRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/lovable/email/transactional/preview': {
       id: '/lovable/email/transactional/preview'
       path: '/lovable/email/transactional/preview'
@@ -176,13 +270,33 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ServicesRouteChildren {
+  ServicesEducationalServicesRoute: typeof ServicesEducationalServicesRoute
+  ServicesLogisticsSalesRoute: typeof ServicesLogisticsSalesRoute
+  ServicesRuralTechStoreRoute: typeof ServicesRuralTechStoreRoute
+  ServicesSaasSalesRoute: typeof ServicesSaasSalesRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesEducationalServicesRoute: ServicesEducationalServicesRoute,
+  ServicesLogisticsSalesRoute: ServicesLogisticsSalesRoute,
+  ServicesRuralTechStoreRoute: ServicesRuralTechStoreRoute,
+  ServicesSaasSalesRoute: ServicesSaasSalesRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   PartnerRoute: PartnerRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesRoute: ServicesRouteWithChildren,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport

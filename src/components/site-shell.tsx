@@ -39,7 +39,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="section-shell grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-4">
           <div><Brand inverse /><p className="mt-5 max-w-xs text-sm leading-7 text-hero-foreground/70">{siteConfig.tagline}</p></div>
           <FooterList title="Company" items={navigation.map((item) => ({ label: item.label, to: item.to }))} />
-          <FooterList title="Services" items={[...services.map((item) => ({ label: item.title, to: "/services" as const })), { label: "Lead Generation", to: "/services" as const }, { label: "Business Development", to: "/services" as const }]} />
+          <FooterList title="Services" items={[...services.map((item) => ({ label: item.title, to: `/services/${item.slug}` })), { label: "Lead Generation", to: "/services" }, { label: "Business Development", to: "/services" }]} />
           <div><h2 className="font-display text-sm font-bold uppercase tracking-wider">Contact</h2><div className="mt-5 space-y-3 text-sm text-hero-foreground/70"><p>{siteConfig.email}</p><p>{siteConfig.phone}</p><p>{siteConfig.address}</p></div><div className="mt-6 flex gap-2"><Button variant="inverse" size="icon" aria-label="LinkedIn placeholder"><Linkedin /></Button><Button variant="inverse" size="icon" aria-label="Other social profile placeholder"><MoveUpRight /></Button></div></div>
         </div>
         <div className="border-t border-hero-foreground/15"><div className="section-shell py-5 text-xs text-hero-foreground/60">© 2026 Samrik Solutions. All rights reserved.</div></div>
@@ -48,6 +48,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
   );
 }
 
-function FooterList({ title, items }: { title: string; items: ReadonlyArray<{ label: string; to: "/" | "/about" | "/services" | "/partner" | "/faq" | "/contact" }> }) {
+function FooterList({ title, items }: { title: string; items: ReadonlyArray<{ label: string; to: string }> }) {
   return <div><h2 className="font-display text-sm font-bold uppercase tracking-wider">{title}</h2><ul className="mt-5 space-y-3">{items.map((item) => <li key={`${title}-${item.label}`}><Link to={item.to} className="text-sm text-hero-foreground/70 transition-colors hover:text-hero-foreground">{item.label}</Link></li>)}</ul></div>;
 }
