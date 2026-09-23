@@ -151,7 +151,7 @@ export const serviceDetails = {
       "Samrik Solutions' Educational Services are designed to help individuals and businesses develop practical, industry-relevant skills in digital technologies, sales, entrepreneurship, and business growth.",
       "Our programs focus on connecting knowledge with practical application, enabling participants to develop skills that can be applied across careers, freelancing, startups, and existing businesses.",
     ],
-    ctaPrimary: { label: "Explore Educational Services", to: "#educational-learning-areas" },
+    ctaPrimary: { label: "View Internship Programs", to: "#internship-programs" },
     ctaSecondary: { label: "Contact Us", to: "/contact" },
     right: {
       type: "educational",

@@ -5,9 +5,20 @@ import { sendTemplateEmail } from "@/lib/email-templates/send-email";
 const base = { name: z.string().trim().min(2, "Enter your full name").max(100), company: z.string().trim().min(2, "Enter your company name").max(120), phone: z.string().trim().min(7, "Enter a valid phone number").max(30), message: z.string().trim().min(10, "Please add a little more detail").max(1200), email: z.string().trim().email("Enter a valid email address").max(255) };
 export const contactSchema = z.object({ ...base, subject: z.string().trim().min(3, "Enter a subject").max(150) });
 export const partnerSchema = z.object({ ...base, industry: z.string().trim().min(2, "Enter your industry").max(100), website: z.union([z.literal(""), z.string().trim().url("Enter a complete website URL")]), service: z.enum(["SaaS Sales", "Logistics Sales", "Educational Services", "Rural Tech Store", "Lead Generation", "Business Development", "Other"], { required_error: "Select a service" }), requirement: z.string().trim().min(5, "Describe your expected requirement").max(300) });
+export const internshipPricingSchema = z.object({
+  name: z.string().trim().min(2, "Enter your full name").max(100),
+  email: z.string().trim().email("Enter a valid email address").max(255),
+  phone: z.string().trim().regex(/^[0-9+\-\s()]{7,20}$/, "Enter a valid mobile number"),
+  college: z.string().trim().min(2, "Enter your college or university name").max(180),
+  studentCategory: z.string().trim().min(2, "Enter the student category").max(100),
+  studentCount: z.coerce.number().int("Enter a whole number").min(1, "Enter at least one student").max(10000),
+  internshipStage: z.literal("Internship Stage 3 – Advanced Internship Program"),
+  message: z.string().trim().min(10, "Please add a little more detail").max(1200),
+});
 
 export type ContactData = z.infer<typeof contactSchema>;
 export type PartnerData = z.infer<typeof partnerSchema>;
+export type InternshipPricingData = z.infer<typeof internshipPricingSchema>;
 
 async function deliverEnquiry(formType: string, senderName: string, senderEmail: string, rows: Array<{ label: string; value: string }>) {
   const idempotencyKey = `${formType.toLowerCase().replace(/\s+/g, "-")}-${Date.now()}-${crypto.randomUUID()}`;
@@ -57,5 +68,27 @@ export const submitPartnershipForm = createServerFn({ method: "POST" })
       { label: "Expected Requirement", value: data.requirement },
       { label: "Message", value: data.message },
     ]);
+    return { ok: true };
+  });
+
+export const submitInternshipPricingRequest = createServerFn({ method: "POST" })
+  .inputValidator((data) => internshipPricingSchema.parse(data))
+  .handler(async ({ data }) => {
+    const createdAt = new Date().toISOString();
+    const id = crypto.randomUUID();
+    await deliverEnquiry("Internship Stage 3 Pricing Request", data.name, data.email, [
+      { label: "Full Name", value: data.name },
+      { label: "Email", value: data.email },
+      { label: "Mobile Number", value: data.phone },
+      { label: "College/University", value: data.college },
+      { label: "Student Category", value: data.studentCategory },
+      { label: "Number of Students", value: String(data.studentCount) },
+      { label: "Internship Stage", value: data.internshipStage },
+      { label: "Message", value: data.message },
+      { label: "Enquiry Status", value: "New" },
+      { label: "Enquiry Date", value: createdAt },
+    ]);
+    const { internshipPricingEnquiryStore } = await import("@/lib/internship-enquiries.server");
+    await internshipPricingEnquiryStore.create({ id, ...data, status: "New", createdAt });
     return { ok: true };
   });
