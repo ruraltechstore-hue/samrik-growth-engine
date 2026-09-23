@@ -193,7 +193,7 @@ function Index() {
             <Industry icon={GraduationCap} title="Education">
               Supporting educational and training organizations in reaching learners and customers.
             </Industry>
-            <Industry icon={Store} title="Rural Tech Store">
+            <Industry icon={Store} title="Rural Tech Store Services">
               Bringing essential digital services and entrepreneurship opportunities to rural and semi-urban
               communities.
             </Industry>

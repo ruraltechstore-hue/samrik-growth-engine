@@ -8,7 +8,7 @@ export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Sales, Educational & Rural Tech Services | Samrik Solutions" },
-      { name: "description", content: "Explore Samrik Solutions services for SaaS and logistics sales, practical digital learning, and accessible rural digital services through Rural Tech Store." },
+      { name: "description", content: "Explore Samrik Solutions services for SaaS and logistics sales, practical digital learning, and accessible rural digital services through Rural Tech Store Services." },
       { property: "og:title", content: "Sales, Educational & Rural Tech Services | Samrik Solutions" },
       { property: "og:description", content: "Business-focused sales solutions, practical learning, and rural digital service centers for entrepreneurs and communities." },
       { property: "og:type", content: "website" },

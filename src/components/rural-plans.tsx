@@ -67,7 +67,7 @@ export function RuralPlansSection() {
       <div className="section-shell">
         <SectionHeading
           eyebrow="Plans & Opportunities"
-          title="Choose your Rural Tech Store role"
+          title="Choose your Rural Tech Store Services role"
           description="Register as an Agent, Distributor, or Super Distributor and start operating digital services in your community."
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
