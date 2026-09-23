@@ -70,7 +70,7 @@ export const Route = createFileRoute("/api/create-razorpay-order")({
           customerPhone: result.data.customerPhone,
           ...(result.data.college ? { college: result.data.college } : {}),
           ...(result.data.course ? { course: result.data.course } : {}),
-          ...(isInternship ? { internshipStage: plan.name } : {}),
+          ...(isInternship && "registrationLabel" in plan ? { internshipStage: plan.registrationLabel } : {}),
           plan: plan.name,
           amountPaise: plan.amountPaise,
           currency: "INR",
