@@ -1,5 +1,5 @@
 /**
- * Server-only order record store for Rural Tech Store registrations.
+ * Server-only order record store for Rural Tech Store Services registrations.
  *
  * This first version keeps records in process memory and writes an audit line
  * to the server log for every state change. The `RuralOrderStore` interface is

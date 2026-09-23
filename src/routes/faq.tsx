@@ -12,7 +12,7 @@ export const Route = createFileRoute("/faq")({
       {
         name: "description",
         content:
-          "Find answers about Samrik Solutions services, engagement process, educational programs, internship plans, Rural Tech Store, Logistics franchise, payments, and partnerships.",
+          "Find answers about Samrik Solutions services, engagement process, educational programs, internship plans, Rural Tech Store Services, Logistics franchise, payments, and partnerships.",
       },
       {
         property: "og:title",
@@ -45,7 +45,7 @@ const faqCategories: Array<{
       },
       {
         q: "What services does Samrik Solutions provide?",
-        a: "Samrik Solutions currently provides SaaS Sales, Logistics Sales, Educational Services, Rural Tech Store opportunities, Lead Generation, and Business Development services.",
+        a: "Samrik Solutions currently provides SaaS Sales, Logistics Sales, Educational Services, Rural Tech Store Services opportunities, Lead Generation, and Business Development services.",
       },
       {
         q: "Who can work with Samrik Solutions?",
