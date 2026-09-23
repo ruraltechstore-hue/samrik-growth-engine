@@ -19,6 +19,9 @@ import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as RefundsCancellationsRouteImport } from './routes/refunds-cancellations'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as ApiCancelRazorpayOrderRouteImport } from './routes/api/cancel-razorpay-order'
+import { Route as ApiCreateRazorpayOrderRouteImport } from './routes/api/create-razorpay-order'
+import { Route as ApiVerifyRazorpayPaymentRouteImport } from './routes/api/verify-razorpay-payment'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesEducationalServicesRouteImport } from './routes/services.educational-services'
 import { Route as ServicesLogisticsSalesRouteImport } from './routes/services.logistics-sales'
@@ -79,6 +82,22 @@ const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCancelRazorpayOrderRoute = ApiCancelRazorpayOrderRouteImport.update({
+  id: '/api/cancel-razorpay-order',
+  path: '/api/cancel-razorpay-order',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiCreateRazorpayOrderRoute = ApiCreateRazorpayOrderRouteImport.update({
+  id: '/api/create-razorpay-order',
+  path: '/api/create-razorpay-order',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiVerifyRazorpayPaymentRoute =
+  ApiVerifyRazorpayPaymentRouteImport.update({
+    id: '/api/verify-razorpay-payment',
+    path: '/api/verify-razorpay-payment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -141,6 +160,9 @@ export interface FileRoutesByFullPath {
   '/refunds-cancellations': typeof RefundsCancellationsRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/api/cancel-razorpay-order': typeof ApiCancelRazorpayOrderRoute
+  '/api/create-razorpay-order': typeof ApiCreateRazorpayOrderRoute
+  '/api/verify-razorpay-payment': typeof ApiVerifyRazorpayPaymentRoute
   '/services/educational-services': typeof ServicesEducationalServicesRoute
   '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
@@ -161,6 +183,9 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refunds-cancellations': typeof RefundsCancellationsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/api/cancel-razorpay-order': typeof ApiCancelRazorpayOrderRoute
+  '/api/create-razorpay-order': typeof ApiCreateRazorpayOrderRoute
+  '/api/verify-razorpay-payment': typeof ApiVerifyRazorpayPaymentRoute
   '/services/educational-services': typeof ServicesEducationalServicesRoute
   '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
@@ -183,6 +208,9 @@ export interface FileRoutesById {
   '/refunds-cancellations': typeof RefundsCancellationsRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/api/cancel-razorpay-order': typeof ApiCancelRazorpayOrderRoute
+  '/api/create-razorpay-order': typeof ApiCreateRazorpayOrderRoute
+  '/api/verify-razorpay-payment': typeof ApiVerifyRazorpayPaymentRoute
   '/services/educational-services': typeof ServicesEducationalServicesRoute
   '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
@@ -206,6 +234,9 @@ export interface FileRouteTypes {
     | '/refunds-cancellations'
     | '/services'
     | '/terms-and-conditions'
+    | '/api/cancel-razorpay-order'
+    | '/api/create-razorpay-order'
+    | '/api/verify-razorpay-payment'
     | '/services/educational-services'
     | '/services/logistics-sales'
     | '/services/rural-tech-store'
@@ -226,6 +257,9 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/refunds-cancellations'
     | '/terms-and-conditions'
+    | '/api/cancel-razorpay-order'
+    | '/api/create-razorpay-order'
+    | '/api/verify-razorpay-payment'
     | '/services/educational-services'
     | '/services/logistics-sales'
     | '/services/rural-tech-store'
@@ -247,6 +281,9 @@ export interface FileRouteTypes {
     | '/refunds-cancellations'
     | '/services'
     | '/terms-and-conditions'
+    | '/api/cancel-razorpay-order'
+    | '/api/create-razorpay-order'
+    | '/api/verify-razorpay-payment'
     | '/services/educational-services'
     | '/services/logistics-sales'
     | '/services/rural-tech-store'
@@ -269,6 +306,9 @@ export interface RootRouteChildren {
   RefundsCancellationsRoute: typeof RefundsCancellationsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  ApiCancelRazorpayOrderRoute: typeof ApiCancelRazorpayOrderRoute
+  ApiCreateRazorpayOrderRoute: typeof ApiCreateRazorpayOrderRoute
+  ApiVerifyRazorpayPaymentRoute: typeof ApiVerifyRazorpayPaymentRoute
   ApiPublicCancelRazorpayOrderRoute: typeof ApiPublicCancelRazorpayOrderRoute
   ApiPublicCreateRazorpayOrderRoute: typeof ApiPublicCreateRazorpayOrderRoute
   ApiPublicVerifyRazorpayPaymentRoute: typeof ApiPublicVerifyRazorpayPaymentRoute
@@ -345,6 +385,27 @@ declare module '@tanstack/react-router' {
       path: '/terms-and-conditions'
       fullPath: '/terms-and-conditions'
       preLoaderRoute: typeof TermsAndConditionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/cancel-razorpay-order': {
+      id: '/api/cancel-razorpay-order'
+      path: '/api/cancel-razorpay-order'
+      fullPath: '/api/cancel-razorpay-order'
+      preLoaderRoute: typeof ApiCancelRazorpayOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/create-razorpay-order': {
+      id: '/api/create-razorpay-order'
+      path: '/api/create-razorpay-order'
+      fullPath: '/api/create-razorpay-order'
+      preLoaderRoute: typeof ApiCreateRazorpayOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/verify-razorpay-payment': {
+      id: '/api/verify-razorpay-payment'
+      path: '/api/verify-razorpay-payment'
+      fullPath: '/api/verify-razorpay-payment'
+      preLoaderRoute: typeof ApiVerifyRazorpayPaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/': {
@@ -444,6 +505,9 @@ const rootRouteChildren: RootRouteChildren = {
   RefundsCancellationsRoute: RefundsCancellationsRoute,
   ServicesRoute: ServicesRouteWithChildren,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
+  ApiCancelRazorpayOrderRoute: ApiCancelRazorpayOrderRoute,
+  ApiCreateRazorpayOrderRoute: ApiCreateRazorpayOrderRoute,
+  ApiVerifyRazorpayPaymentRoute: ApiVerifyRazorpayPaymentRoute,
   ApiPublicCancelRazorpayOrderRoute: ApiPublicCancelRazorpayOrderRoute,
   ApiPublicCreateRazorpayOrderRoute: ApiPublicCreateRazorpayOrderRoute,
   ApiPublicVerifyRazorpayPaymentRoute: ApiPublicVerifyRazorpayPaymentRoute,
