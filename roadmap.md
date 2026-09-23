@@ -15,3 +15,4 @@
 - [ ] Add RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET so live payments can run
 - [ ] Connect MySQL/PostgreSQL to persist Rural Tech Store orders (store interface ready in src/lib/rural-orders.server.ts)
 - [x] Add Logistics Services franchise plans with secure Razorpay checkout and verified eLocal Store plan details
+- [ ] Add three Educational Services internship plans with Stage 1/2 Razorpay registration and Stage 3 pricing enquiry
