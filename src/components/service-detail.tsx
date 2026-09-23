@@ -31,7 +31,7 @@ export function ServiceDetailPage({ slug }: ServiceDetailPageProps) {
                 <Icon />
               </span>
               <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-secondary">{service.eyebrow}</p>
-              <h1 className="mt-3 font-display text-3xl font-bold md:text-4xl">{service.title}</h1>
+              <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">{service.title}</h2>
               {service.subheading && (
                 <p className="mt-5 text-lg font-semibold text-foreground">{service.subheading}</p>
               )}
