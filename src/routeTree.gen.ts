@@ -12,9 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiesPolicyRouteImport } from './routes/cookies-policy'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PartnerRouteImport } from './routes/partner'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as RefundsCancellationsRouteImport } from './routes/refunds-cancellations'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesEducationalServicesRouteImport } from './routes/services.educational-services'
 import { Route as ServicesLogisticsSalesRouteImport } from './routes/services.logistics-sales'
@@ -37,6 +41,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiesPolicyRoute = CookiesPolicyRouteImport.update({
+  id: '/cookies-policy',
+  path: '/cookies-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
@@ -47,9 +56,24 @@ const PartnerRoute = PartnerRouteImport.update({
   path: '/partner',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundsCancellationsRoute = RefundsCancellationsRouteImport.update({
+  id: '/refunds-cancellations',
+  path: '/refunds-cancellations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
@@ -89,9 +113,13 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/cookies-policy': typeof CookiesPolicyRoute
   '/faq': typeof FaqRoute
   '/partner': typeof PartnerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refunds-cancellations': typeof RefundsCancellationsRoute
   '/services': typeof ServicesRouteWithChildren
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/services/educational-services': typeof ServicesEducationalServicesRoute
   '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
@@ -103,8 +131,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/cookies-policy': typeof CookiesPolicyRoute
   '/faq': typeof FaqRoute
   '/partner': typeof PartnerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refunds-cancellations': typeof RefundsCancellationsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/services/educational-services': typeof ServicesEducationalServicesRoute
   '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
@@ -117,9 +149,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/cookies-policy': typeof CookiesPolicyRoute
   '/faq': typeof FaqRoute
   '/partner': typeof PartnerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refunds-cancellations': typeof RefundsCancellationsRoute
   '/services': typeof ServicesRouteWithChildren
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/services/educational-services': typeof ServicesEducationalServicesRoute
   '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
@@ -133,9 +169,13 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/cookies-policy'
     | '/faq'
     | '/partner'
+    | '/privacy-policy'
+    | '/refunds-cancellations'
     | '/services'
+    | '/terms-and-conditions'
     | '/services/educational-services'
     | '/services/logistics-sales'
     | '/services/rural-tech-store'
@@ -147,8 +187,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/cookies-policy'
     | '/faq'
     | '/partner'
+    | '/privacy-policy'
+    | '/refunds-cancellations'
+    | '/terms-and-conditions'
     | '/services/educational-services'
     | '/services/logistics-sales'
     | '/services/rural-tech-store'
@@ -160,9 +204,13 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/cookies-policy'
     | '/faq'
     | '/partner'
+    | '/privacy-policy'
+    | '/refunds-cancellations'
     | '/services'
+    | '/terms-and-conditions'
     | '/services/educational-services'
     | '/services/logistics-sales'
     | '/services/rural-tech-store'
@@ -175,9 +223,13 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  CookiesPolicyRoute: typeof CookiesPolicyRoute
   FaqRoute: typeof FaqRoute
   PartnerRoute: typeof PartnerRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  RefundsCancellationsRoute: typeof RefundsCancellationsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
@@ -204,6 +256,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookies-policy': {
+      id: '/cookies-policy'
+      path: '/cookies-policy'
+      fullPath: '/cookies-policy'
+      preLoaderRoute: typeof CookiesPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faq': {
       id: '/faq'
       path: '/faq'
@@ -218,11 +277,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartnerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refunds-cancellations': {
+      id: '/refunds-cancellations'
+      path: '/refunds-cancellations'
+      fullPath: '/refunds-cancellations'
+      preLoaderRoute: typeof RefundsCancellationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/': {
@@ -294,9 +374,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  CookiesPolicyRoute: CookiesPolicyRoute,
   FaqRoute: FaqRoute,
   PartnerRoute: PartnerRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  RefundsCancellationsRoute: RefundsCancellationsRoute,
   ServicesRoute: ServicesRouteWithChildren,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
