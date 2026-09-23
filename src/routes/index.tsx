@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
 
 // IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  const serviceLinks = ["/services#saas-sales", "/services#logistics-sales", "/services#educational-services", "/services#rural-tech-store"] as const;
+  const serviceLinks = ["/services/saas-sales", "/services/logistics-sales", "/services/educational-services", "/services/rural-tech-store"] as const;
 
   return (
     <>
@@ -53,7 +53,7 @@ function Index() {
                     {"subtitle" in service && <p className="text-sm font-semibold leading-6 text-secondary">{service.subtitle}</p>}
                   </div>
                   <p className="mt-3 text-sm leading-7 text-muted-foreground">{service.description}</p>
-                  <Button asChild variant="link" className="mt-auto h-auto justify-start px-0 pt-6"><a href={serviceLinks[index]}>Learn More <ArrowRight /></a></Button>
+                  <Button asChild variant="link" className="mt-auto h-auto justify-start px-0 pt-6"><Link to={serviceLinks[index]}>Learn More <ArrowRight /></Link></Button>
                 </article>
               );
             })}
