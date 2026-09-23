@@ -74,6 +74,8 @@ export const submitPartnershipForm = createServerFn({ method: "POST" })
 export const submitInternshipPricingRequest = createServerFn({ method: "POST" })
   .inputValidator((data) => internshipPricingSchema.parse(data))
   .handler(async ({ data }) => {
+    const createdAt = new Date().toISOString();
+    const id = crypto.randomUUID();
     await deliverEnquiry("Internship Stage 3 Pricing Request", data.name, data.email, [
       { label: "Full Name", value: data.name },
       { label: "Email", value: data.email },
@@ -84,7 +86,9 @@ export const submitInternshipPricingRequest = createServerFn({ method: "POST" })
       { label: "Internship Stage", value: data.internshipStage },
       { label: "Message", value: data.message },
       { label: "Enquiry Status", value: "New" },
-      { label: "Enquiry Date", value: new Date().toISOString() },
+      { label: "Enquiry Date", value: createdAt },
     ]);
+    const { internshipPricingEnquiryStore } = await import("@/lib/internship-enquiries.server");
+    await internshipPricingEnquiryStore.create({ id, ...data, status: "New", createdAt });
     return { ok: true };
   });
