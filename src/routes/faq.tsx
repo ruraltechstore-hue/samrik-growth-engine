@@ -319,23 +319,23 @@ function FAQ() {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" className="w-full">
-                  <Link to="/partner-with-us">Partner With Us</Link>
+                  <Link to="/partner">Partner With Us</Link>
                 </Button>
               </div>
               <div className="mt-6 space-y-3 border-t border-border pt-6 text-sm text-muted-foreground">
                 <a
-                  href={`mailto:${siteConfig.contact.email}`}
+                  href={`mailto:${siteConfig.email}`}
                   className="flex items-center gap-3 transition-colors hover:text-foreground"
                 >
                   <Mail className="h-4 w-4 text-primary" />
-                  {siteConfig.contact.email}
+                  {siteConfig.email}
                 </a>
                 <a
-                  href={`tel:${siteConfig.contact.phone.replace(/\s+/g, "")}`}
+                  href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
                   className="flex items-center gap-3 transition-colors hover:text-foreground"
                 >
                   <Phone className="h-4 w-4 text-primary" />
-                  {siteConfig.contact.phone}
+                  {siteConfig.phone}
                 </a>
               </div>
             </div>
