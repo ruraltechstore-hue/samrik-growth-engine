@@ -86,6 +86,7 @@ export function ServiceDetailPage({ slug, extra }: ServiceDetailPageProps) {
           </article>
         </div>
       </section>
+      {extra}
       <CTASection />
     </>
   );
