@@ -53,7 +53,7 @@ function Index() {
                     {"subtitle" in service && <p className="text-sm font-semibold leading-6 text-secondary">{service.subtitle}</p>}
                   </div>
                   <p className="mt-3 text-sm leading-7 text-muted-foreground">{service.description}</p>
-                  <Button asChild variant="link" className="mt-auto h-auto justify-start px-0 pt-6"><Link to={serviceLinks[index]}>Learn More <ArrowRight /></Link></Button>
+                  <Button asChild variant="link" className="mt-auto h-auto justify-start px-0 pt-6"><Link to={serviceLinks[index] as typeof serviceLinks[number]}>Learn More <ArrowRight /></Link></Button>
                 </article>
               );
             })}
