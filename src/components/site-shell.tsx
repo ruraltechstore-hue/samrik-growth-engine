@@ -21,7 +21,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
           <div className="ml-4 hidden min-[900px]:block xl:ml-6">
-            <Button asChild variant="accent" size="icon" aria-label="Chat with us on WhatsApp"><a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Chat with Samrik Solutions on WhatsApp"><WhatsAppIcon className="size-5" /></a></Button>
+            <Button asChild variant="outline" size="icon" aria-label="Chat with us on WhatsApp" className="bg-card"><a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Chat with Samrik Solutions on WhatsApp"><WhatsAppIcon className="size-5" /></a></Button>
           </div>
           <Sheet>
             <SheetTrigger asChild><Button variant="ghost" size="icon" className="ml-auto min-[900px]:hidden" aria-label="Open menu"><Menu /></Button></SheetTrigger>
@@ -30,7 +30,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
               <nav className="flex flex-col p-4" aria-label="Mobile navigation">
                 {navigation.map((item) => <SheetClose asChild key={item.to}><Link to={item.to} className="border-b border-border px-3 py-4 font-semibold text-foreground">{item.label}</Link></SheetClose>)}
               </nav>
-              <div className="p-4"><SheetClose asChild><Button asChild variant="accent" size="lg" className="w-full"><a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="size-5" /> Chat on WhatsApp</a></Button></SheetClose></div>
+              <div className="p-4"><SheetClose asChild><Button asChild variant="outline" size="lg" className="w-full bg-card"><a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="size-5" /> Chat on WhatsApp</a></Button></SheetClose></div>
             </SheetContent>
           </Sheet>
         </div>
