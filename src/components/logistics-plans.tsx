@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { SectionHeading } from "@/components/marketing";
+import { QrPaymentDone, QrPaymentView, postJson } from "@/components/qr-payment";
 import { logisticsPlans, logisticsPricingNotice, type LogisticsPlan } from "@/lib/logistics-plans";
 import { cn } from "@/lib/utils";
 
@@ -23,7 +24,9 @@ type Stage =
   | { kind: "processing" }
   | { kind: "success"; plan: string; priceLabel: string; paymentId: string }
   | { kind: "failed" }
-  | { kind: "cancelled" };
+  | { kind: "cancelled" }
+  | { kind: "qr"; referenceId: string }
+  | { kind: "qr-done"; referenceId: string };
 
 declare global {
   interface Window {
@@ -43,16 +46,6 @@ function loadRazorpayScript(): Promise<boolean> {
   });
 }
 
-async function postJson(path: string, body: unknown) {
-  const response = await fetch(path, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  const data = (await response.json().catch(() => ({}))) as Record<string, unknown>;
-  if (!response.ok) throw new Error(typeof data["error"] === "string" ? data["error"] : "Request failed");
-  return data;
-}
 
 export function LogisticsPlansSection() {
   const [activePlan, setActivePlan] = useState<LogisticsPlan | null>(null);
