@@ -1,4 +1,4 @@
-import { CheckCircle2, ExternalLink, QrCode } from "lucide-react";
+import { CheckCircle2, QrCode } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import qrAsset from "@/assets/payment-qr.jpeg.asset.json";
@@ -20,7 +20,6 @@ export async function postJson(path: string, body: unknown) {
 export function QrPaymentView({
   planLabel,
   priceLabel,
-  amountInr,
   customerName,
   referenceId,
   onBack,
@@ -28,15 +27,11 @@ export function QrPaymentView({
 }: {
   planLabel: string;
   priceLabel: string;
-  amountInr: number;
   customerName: string;
   referenceId: string;
   onBack: () => void;
   onDone: () => void;
 }) {
-  // Pre-fill the payable amount on the Razorpay payment page so the customer
-  // never has to type it manually.
-  const paymentPageUrl = `${razorpayPaymentPageUrl}?amount=${amountInr}`;
   return (
     <div className="text-center">
       <QrCode className="mx-auto size-10 text-secondary" />
