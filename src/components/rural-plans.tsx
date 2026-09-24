@@ -226,7 +226,6 @@ function PlanCheckout({
       <QrPaymentView
         planLabel={plan.name}
         priceLabel={plan.priceLabel}
-        amountInr={plan.amountPaise / 100}
         customerName={formValues?.customerName ?? ""}
         referenceId={stage.referenceId}
         onBack={() => setStage({ kind: "form" })}
