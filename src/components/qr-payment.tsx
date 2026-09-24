@@ -20,6 +20,7 @@ export async function postJson(path: string, body: unknown) {
 export function QrPaymentView({
   planLabel,
   priceLabel,
+  amountInr,
   customerName,
   referenceId,
   onBack,
@@ -27,11 +28,15 @@ export function QrPaymentView({
 }: {
   planLabel: string;
   priceLabel: string;
+  amountInr: number;
   customerName: string;
   referenceId: string;
   onBack: () => void;
   onDone: () => void;
 }) {
+  // Pre-fill the payable amount on the Razorpay payment page so the customer
+  // never has to type it manually.
+  const paymentPageUrl = `${razorpayPaymentPageUrl}?amount=${amountInr}`;
   return (
     <div className="text-center">
       <QrCode className="mx-auto size-10 text-secondary" />
