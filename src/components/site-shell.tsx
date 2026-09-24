@@ -21,7 +21,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
           <div className="ml-4 hidden min-[900px]:block xl:ml-6">
-            <a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Chat with Samrik Solutions on WhatsApp" className="transition-transform hover:scale-105"><WhatsAppIcon className="size-9" /></a>
+            <a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Chat with Samrik Solutions on WhatsApp" className="transition-transform hover:scale-105"><WhatsAppIcon className="size-7" /></a>
           </div>
           <Sheet>
             <SheetTrigger asChild><Button variant="ghost" size="icon" className="ml-auto min-[900px]:hidden" aria-label="Open menu"><Menu /></Button></SheetTrigger>
