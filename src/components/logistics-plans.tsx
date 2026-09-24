@@ -262,18 +262,14 @@ function PlanCheckout({
           <Input {...register("customerPhone")} type="tel" className="h-11 bg-card" placeholder="Mobile number" autoComplete="tel" />
         </Field>
         {error && <p className="border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive" role="alert">{error}</p>}
-        <Button type="submit" variant="accent" size="lg" className="w-full" disabled={isSubmitting || stage.kind === "processing"}>
-          {isSubmitting || stage.kind === "processing" ? "Opening secure payment…" : `Pay ${plan.priceLabel}`}
-        </Button>
         <Button
-          type="button"
-          variant="outline"
+          type="submit"
+          variant="accent"
           size="lg"
           className="w-full"
           disabled={isSubmitting || stage.kind === "processing"}
-          onClick={handleSubmit(startQrPayment)}
         >
-          Pay via QR Code (UPI)
+          {isSubmitting || stage.kind === "processing" ? "Saving registration…" : "Pay via QR Code (UPI)"}
         </Button>
       </form>
     </div>

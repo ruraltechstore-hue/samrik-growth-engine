@@ -267,33 +267,16 @@ function PlanCheckout({
         </DialogTitle>
         <DialogDescription>Enter your details to continue to secure payment.</DialogDescription>
       </DialogHeader>
-      <form className="mt-5 grid gap-4" noValidate onSubmit={handleSubmit(startPayment)}>
-        <Field label="Full Name" error={errors.customerName?.message}>
-          <Input {...register("customerName")} className="h-11 bg-card" placeholder="Your full name" />
-        </Field>
-        <Field label="Email Address" error={errors.customerEmail?.message}>
-          <Input {...register("customerEmail")} type="email" className="h-11 bg-card" placeholder="name@example.com" />
-        </Field>
-        <Field label="Mobile Number" error={errors.customerPhone?.message}>
-          <Input {...register("customerPhone")} type="tel" className="h-11 bg-card" placeholder="Mobile number" />
-        </Field>
-        {error && (
-          <p className="border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive" role="alert">
-            {error}
-          </p>
-        )}
-        <Button type="submit" variant="accent" size="lg" className="w-full" disabled={isSubmitting || stage.kind === "processing"}>
-          {isSubmitting || stage.kind === "processing" ? "Opening secure payment…" : `Pay ${plan.priceLabel}`}
-        </Button>
+      <form className="mt-5 grid gap-4" noValidate onSubmit={handleSubmit(startQrPayment)}>
+...
         <Button
-          type="button"
-          variant="outline"
+          type="submit"
+          variant="accent"
           size="lg"
           className="w-full"
           disabled={isSubmitting || stage.kind === "processing"}
-          onClick={handleSubmit(startQrPayment)}
         >
-          Pay via QR Code (UPI)
+          {isSubmitting || stage.kind === "processing" ? "Saving registration…" : "Pay via QR Code (UPI)"}
         </Button>
       </form>
     </div>
