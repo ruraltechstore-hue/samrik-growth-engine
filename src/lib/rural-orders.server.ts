@@ -6,7 +6,7 @@
  * the single seam to replace with MySQL/PostgreSQL later — swap `memoryStore`
  * for a DB-backed implementation and nothing else has to change.
  */
-export type RuralOrderStatus = "Created" | "Paid" | "Failed" | "Cancelled";
+export type RuralOrderStatus = "Created" | "AwaitingPayment" | "Paid" | "Failed" | "Cancelled";
 
 export interface RuralOrderRecord {
   customerName: string;
