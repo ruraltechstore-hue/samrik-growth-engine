@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { SectionHeading } from "@/components/marketing";
+import { QrPaymentDone, QrPaymentView, postJson } from "@/components/qr-payment";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -33,7 +34,9 @@ type PaymentStage =
   | { kind: "processing" }
   | { kind: "success"; student: string; plan: string; priceLabel: string; paymentId: string }
   | { kind: "failed" }
-  | { kind: "cancelled" };
+  | { kind: "cancelled" }
+  | { kind: "qr"; referenceId: string; student: string }
+  | { kind: "qr-done"; referenceId: string };
 
 declare global {
   interface Window {
@@ -53,16 +56,6 @@ async function loadRazorpayScript(): Promise<boolean> {
   });
 }
 
-async function postJson(path: string, body: unknown) {
-  const response = await fetch(path, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  const data = (await response.json().catch(() => ({}))) as Record<string, unknown>;
-  if (!response.ok) throw new Error(typeof data["error"] === "string" ? data["error"] : "Request failed");
-  return data;
-}
 
 export function InternshipPlansSection() {
   const [activePlan, setActivePlan] = useState<InternshipPlan | null>(null);
