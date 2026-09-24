@@ -44,6 +44,23 @@ export const Route = createFileRoute("/api/verify-razorpay-payment")({
           return Response.json({ verified: false, error: "Payment verification failed." }, { status: 400 });
         }
 
+        const { notifyRegistration } = await import("@/lib/registration-email.server");
+        await notifyRegistration({
+          formType: "Payment Received — Registration Confirmed",
+          customerName: record.customerName,
+          customerEmail: record.customerEmail,
+          customerPhone: record.customerPhone,
+          ...(record.college ? { college: record.college } : {}),
+          ...(record.course ? { course: record.course } : {}),
+          ...(record.internshipStage ? { internshipStage: record.internshipStage } : {}),
+          plan: record.plan,
+          priceLabel: `₹${(record.amountPaise / 100).toLocaleString("en-IN")}`,
+          reference: record.razorpayOrderId,
+          referenceLabel: "Razorpay Order ID",
+          paymentId: result.data.razorpay_payment_id,
+          status: "Paid",
+        });
+
         return Response.json({
           verified: true,
           paymentId: result.data.razorpay_payment_id,

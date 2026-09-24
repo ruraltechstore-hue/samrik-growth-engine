@@ -40,6 +40,21 @@ export const Route = createFileRoute("/api/public/verify-razorpay-payment")({
         }
 
         const record = await ruralOrderStore.get(parsed.razorpay_order_id);
+        if (record) {
+          const { notifyRegistration } = await import("@/lib/registration-email.server");
+          await notifyRegistration({
+            formType: "Payment Received — Rural Tech Store Services Registration",
+            customerName: record.customerName,
+            customerEmail: record.customerEmail,
+            customerPhone: record.customerPhone,
+            plan: record.plan,
+            priceLabel: `₹${(record.amountPaise / 100).toLocaleString("en-IN")}`,
+            reference: record.razorpayOrderId,
+            referenceLabel: "Razorpay Order ID",
+            paymentId: parsed.razorpay_payment_id,
+            status: "Paid",
+          });
+        }
         return Response.json({
           verified: true,
           paymentId: parsed.razorpay_payment_id,
