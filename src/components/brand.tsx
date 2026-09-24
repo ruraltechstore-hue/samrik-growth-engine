@@ -1,11 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import samrikLogo from "@/assets/samrik-logo.png.asset.json";
 
 export function Brand({ inverse = false }: { inverse?: boolean }) {
   return (
     <Link to="/" className="inline-flex items-center" aria-label="Samrik Solutions home">
       <img
-        src={samrikLogo.url}
+        src="/Samrik logo.png"
         alt="Samrik Solutions logo"
         className={
           inverse

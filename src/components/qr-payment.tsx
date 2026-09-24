@@ -1,7 +1,6 @@
 import { CheckCircle2, QrCode } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import qrAsset from "@/assets/payment-qr.jpeg.asset.json";
 
 
 export async function postJson(path: string, body: unknown) {
@@ -57,7 +56,7 @@ export function QrPaymentView({
       </dl>
 
       <div className="mx-auto mt-6 max-w-xs overflow-hidden rounded-lg border border-border shadow-sm">
-        <img src={qrAsset.url} alt="Samrik Solutions UPI payment QR code — powered by Razorpay" className="w-full" />
+        <img src="/Qr-razorpay.jpeg" alt="Samrik Solutions UPI payment QR code — powered by Razorpay" className="w-full" />
       </div>
 
       <p className="mt-5 text-sm leading-7 text-muted-foreground">

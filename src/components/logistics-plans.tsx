@@ -28,23 +28,6 @@ type Stage =
   | { kind: "qr"; referenceId: string }
   | { kind: "qr-done"; referenceId: string };
 
-declare global {
-  interface Window {
-    Razorpay?: new (options: Record<string, unknown>) => { open: () => void };
-  }
-}
-
-function loadRazorpayScript(): Promise<boolean> {
-  if (typeof window === "undefined") return Promise.resolve(false);
-  if (window.Razorpay) return Promise.resolve(true);
-  return new Promise((resolve) => {
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.onload = () => resolve(true);
-    script.onerror = () => resolve(false);
-    document.body.appendChild(script);
-  });
-}
 
 
 export function LogisticsPlansSection() {
@@ -103,7 +86,7 @@ export function LogisticsPlansSection() {
       </div>
 
       <Dialog open={activePlan !== null} onOpenChange={(open) => !open && setActivePlan(null)}>
-        <DialogContent className="sm:max-w-lg">
+        <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
           {activePlan && <PlanCheckout plan={activePlan} stage={stage} setStage={setStage} onClose={() => setActivePlan(null)} />}
         </DialogContent>
       </Dialog>
@@ -139,56 +122,6 @@ function PlanCheckout({
     }
   }
 
-  async function startPayment(values: CustomerData) {
-    setError(undefined);
-    const ready = await loadRazorpayScript();
-    if (!ready || !window.Razorpay) {
-      setError("Could not load the secure payment window. Please check your connection and try again.");
-      return;
-    }
-
-    let order: Record<string, unknown>;
-    try {
-      order = await postJson("/api/create-razorpay-order", { plan: plan.id, ...values });
-    } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Could not start the payment. Please try again.");
-      return;
-    }
-
-    setStage({ kind: "processing" });
-    const orderId = order["orderId"] as string;
-    const checkout = new window.Razorpay({
-      key: order["keyId"],
-      order_id: orderId,
-      amount: order["amount"],
-      currency: "INR",
-      name: "Samrik Solutions",
-      description: `${plan.name} — ${plan.priceLabel}`,
-      prefill: { name: values.customerName, email: values.customerEmail, contact: values.customerPhone },
-      notes: { plan: plan.name },
-      modal: {
-        ondismiss: () => {
-          void postJson("/api/cancel-razorpay-order", { razorpay_order_id: orderId, status: "Cancelled" }).catch(() => {});
-          setStage({ kind: "cancelled" });
-        },
-      },
-      handler: (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) => {
-        void (async () => {
-          try {
-            const verified = await postJson("/api/verify-razorpay-payment", response);
-            setStage(
-              verified["verified"] === true
-                ? { kind: "success", plan: plan.name, priceLabel: plan.priceLabel, paymentId: response.razorpay_payment_id }
-                : { kind: "failed" },
-            );
-          } catch {
-            setStage({ kind: "failed" });
-          }
-        })();
-      },
-    });
-    checkout.open();
-  }
 
   if (stage.kind === "success") {
     return (
