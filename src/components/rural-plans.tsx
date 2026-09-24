@@ -221,6 +221,23 @@ function PlanCheckout({
     );
   }
 
+  if (stage.kind === "qr") {
+    return (
+      <QrPaymentView
+        planLabel={plan.name}
+        priceLabel={plan.priceLabel}
+        customerName={formValues?.customerName ?? ""}
+        referenceId={stage.referenceId}
+        onBack={() => setStage({ kind: "form" })}
+        onDone={() => setStage({ kind: "qr-done", referenceId: stage.referenceId })}
+      />
+    );
+  }
+
+  if (stage.kind === "qr-done") {
+    return <QrPaymentDone planLabel={plan.name} priceLabel={plan.priceLabel} referenceId={stage.referenceId} />;
+  }
+
   if (stage.kind === "failed" || stage.kind === "cancelled") {
     const cancelled = stage.kind === "cancelled";
     return (
@@ -267,6 +284,16 @@ function PlanCheckout({
         )}
         <Button type="submit" variant="accent" size="lg" className="w-full" disabled={isSubmitting || stage.kind === "processing"}>
           {isSubmitting || stage.kind === "processing" ? "Opening secure payment…" : `Pay ${plan.priceLabel}`}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          size="lg"
+          className="w-full"
+          disabled={isSubmitting || stage.kind === "processing"}
+          onClick={handleSubmit(startQrPayment)}
+        >
+          Pay via QR Code (UPI)
         </Button>
       </form>
     </div>
