@@ -69,12 +69,7 @@ export function QrPaymentView({
         team can verify and confirm your registration.
       </p>
 
-      <Button asChild variant="outline" size="lg" className="mt-5 w-full">
-        <a href={paymentPageUrl} target="_blank" rel="noreferrer">
-          Pay {priceLabel} on Razorpay — Amount Pre-filled <ExternalLink className="ml-2 size-4" />
-        </a>
-      </Button>
-      <Button variant="accent" size="lg" className="mt-3 w-full" onClick={onDone}>
+      <Button variant="accent" size="lg" className="mt-5 w-full" onClick={onDone}>
         I Have Completed the Payment
       </Button>
       <Button variant="link" className="mt-2 w-full" onClick={onBack}>
