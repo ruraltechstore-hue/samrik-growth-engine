@@ -47,6 +47,21 @@ export const Route = createFileRoute("/api/public/register-qr-payment")({
           updatedAt: now,
         });
 
+        const { notifyRegistration } = await import("@/lib/registration-email.server");
+        await notifyRegistration({
+          formType: "QR / UPI Registration",
+          customerName: parsed.customerName,
+          customerEmail: parsed.customerEmail,
+          customerPhone: parsed.customerPhone,
+          ...(parsed.college ? { college: parsed.college } : {}),
+          ...(parsed.course ? { course: parsed.course } : {}),
+          plan: plan.name,
+          priceLabel: plan.priceLabel,
+          reference: referenceId,
+          referenceLabel: "QR Reference ID",
+          status: "Awaiting Payment (manual verification required)",
+        });
+
         return Response.json({ referenceId, plan: plan.name, priceLabel: plan.priceLabel });
       },
     },
