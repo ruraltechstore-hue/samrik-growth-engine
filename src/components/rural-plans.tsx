@@ -126,11 +126,23 @@ function PlanCheckout({
   onClose: () => void;
 }) {
   const [error, setError] = useState<string>();
+  const [formValues, setFormValues] = useState<CustomerData>();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<CustomerData>({ resolver: zodResolver(customerSchema) });
+
+  async function startQrPayment(values: CustomerData) {
+    setError(undefined);
+    try {
+      const result = await postJson("/api/public/register-qr-payment", { plan: plan.id, ...values });
+      setFormValues(values);
+      setStage({ kind: "qr", referenceId: result["referenceId"] as string });
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Could not save your details. Please try again.");
+    }
+  }
 
   async function startPayment(values: CustomerData) {
     setError(undefined);
