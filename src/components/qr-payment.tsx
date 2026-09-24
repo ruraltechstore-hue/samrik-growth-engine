@@ -67,14 +67,16 @@ export function QrPaymentView({
       </div>
 
       <p className="mt-5 text-sm leading-7 text-muted-foreground">
-        Pay the exact amount shown above with GPay, PhonePe, Paytm, or any UPI app. Please mention your
-        name and Reference ID <span className="font-semibold text-foreground">{referenceId}</span> in the
-        payment note so our team can verify and confirm your registration.
+        Scan the QR code with GPay, PhonePe, Paytm, or any UPI app and pay the exact amount of{" "}
+        <span className="font-semibold text-foreground">{priceLabel}</span> — no need to enter it yourself.
+        Please mention your name and Reference ID{" "}
+        <span className="font-semibold text-foreground">{referenceId}</span> in the payment note so our
+        team can verify and confirm your registration.
       </p>
 
       <Button asChild variant="outline" size="lg" className="mt-5 w-full">
-        <a href={razorpayPaymentPageUrl} target="_blank" rel="noreferrer">
-          Open Razorpay Payment Page <ExternalLink className="ml-2 size-4" />
+        <a href={paymentPageUrl} target="_blank" rel="noreferrer">
+          Pay {priceLabel} on Razorpay — Amount Pre-filled <ExternalLink className="ml-2 size-4" />
         </a>
       </Button>
       <Button variant="accent" size="lg" className="mt-3 w-full" onClick={onDone}>
