@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import qrAsset from "@/assets/payment-qr.jpeg.asset.json";
 
-export const razorpayPaymentPageUrl = "https://razorpay.me/@samriksolutionsprivatelimited";
 
 export async function postJson(path: string, body: unknown) {
   const response = await fetch(path, {
