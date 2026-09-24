@@ -130,6 +130,16 @@ function PaymentRegistration({ plan, stage, setStage, onClose }: { plan: PaidInt
   const [error, setError] = useState<string>();
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<RegistrationData>({ resolver: zodResolver(registrationSchema) });
 
+  async function startQrPayment(values: RegistrationData) {
+    setError(undefined);
+    try {
+      const result = await postJson("/api/public/register-qr-payment", { plan: plan.id, ...values });
+      setStage({ kind: "qr", referenceId: result["referenceId"] as string, student: values.customerName });
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Could not save your details. Please try again.");
+    }
+  }
+
   async function startPayment(values: RegistrationData) {
     setError(undefined);
     const ready = await loadRazorpayScript();
@@ -178,6 +188,21 @@ function PaymentRegistration({ plan, stage, setStage, onClose }: { plan: PaidInt
   }
 
   if (stage.kind === "success") return <PaymentSuccess stage={stage} />;
+  if (stage.kind === "qr") {
+    return (
+      <QrPaymentView
+        planLabel={plan.registrationLabel}
+        priceLabel={`${plan.priceLabel} per student`}
+        customerName={stage.student}
+        referenceId={stage.referenceId}
+        onBack={() => setStage({ kind: "form" })}
+        onDone={() => setStage({ kind: "qr-done", referenceId: stage.referenceId })}
+      />
+    );
+  }
+  if (stage.kind === "qr-done") {
+    return <QrPaymentDone planLabel={plan.registrationLabel} priceLabel={`${plan.priceLabel} per student`} referenceId={stage.referenceId} />;
+  }
   if (stage.kind === "failed" || stage.kind === "cancelled") {
     return <PaymentIncomplete cancelled={stage.kind === "cancelled"} retry={() => setStage({ kind: "form" })} onClose={onClose} />;
   }
@@ -201,6 +226,16 @@ function PaymentRegistration({ plan, stage, setStage, onClose }: { plan: PaidInt
         {error && <p className="border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive" role="alert">{error}</p>}
         <Button type="submit" variant="accent" size="lg" className="w-full" disabled={isSubmitting || stage.kind === "processing"}>
           {isSubmitting || stage.kind === "processing" ? "Opening secure payment…" : `Pay ${plan.priceLabel}`}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          size="lg"
+          className="w-full"
+          disabled={isSubmitting || stage.kind === "processing"}
+          onClick={handleSubmit(startQrPayment)}
+        >
+          Pay via QR Code (UPI)
         </Button>
       </form>
     </div>
