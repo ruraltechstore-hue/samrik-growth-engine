@@ -71,6 +71,19 @@ export const Route = createFileRoute("/api/public/create-razorpay-order")({
           updatedAt: now,
         });
 
+        const { notifyRegistration } = await import("@/lib/registration-email.server");
+        await notifyRegistration({
+          formType: "Rural Tech Store Services Registration",
+          customerName: parsed.customerName,
+          customerEmail: parsed.customerEmail,
+          customerPhone: parsed.customerPhone,
+          plan: plan.name,
+          priceLabel: plan.priceLabel,
+          reference: order.id,
+          referenceLabel: "Razorpay Order ID",
+          status: "Payment Initiated",
+        });
+
         return Response.json({
           orderId: order.id,
           amount: order.amount,

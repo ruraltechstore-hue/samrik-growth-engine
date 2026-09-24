@@ -81,6 +81,22 @@ export const Route = createFileRoute("/api/create-razorpay-order")({
           updatedAt: now,
         });
 
+        const { notifyRegistration } = await import("@/lib/registration-email.server");
+        await notifyRegistration({
+          formType: isInternship ? "Internship Registration" : "Logistics Franchise Registration",
+          customerName: result.data.customerName,
+          customerEmail: result.data.customerEmail,
+          customerPhone: result.data.customerPhone,
+          ...(result.data.college ? { college: result.data.college } : {}),
+          ...(result.data.course ? { course: result.data.course } : {}),
+          ...(isInternship && "registrationLabel" in plan ? { internshipStage: plan.registrationLabel } : {}),
+          plan: plan.name,
+          priceLabel: plan.priceLabel,
+          reference: order.id,
+          referenceLabel: "Razorpay Order ID",
+          status: "Payment Initiated",
+        });
+
         return Response.json({
           orderId: order.id,
           amount: order.amount,
