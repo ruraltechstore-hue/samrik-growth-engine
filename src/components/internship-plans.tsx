@@ -193,6 +193,7 @@ function PaymentRegistration({ plan, stage, setStage, onClose }: { plan: PaidInt
       <QrPaymentView
         planLabel={plan.registrationLabel}
         priceLabel={`${plan.priceLabel} per student`}
+        amountInr={(plan.amountPaise ?? 0) / 100}
         customerName={stage.student}
         referenceId={stage.referenceId}
         onBack={() => setStage({ kind: "form" })}
