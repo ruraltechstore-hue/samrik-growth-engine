@@ -213,7 +213,7 @@ function PaymentRegistration({ plan, stage, setStage, onClose }: { plan: PaidInt
         <DialogTitle className="font-display text-2xl">Student Registration</DialogTitle>
         <DialogDescription>Complete your details before continuing to secure payment.</DialogDescription>
       </DialogHeader>
-      <form className="mt-5 grid gap-4" noValidate onSubmit={handleSubmit(startPayment)}>
+      <form className="mt-5 grid gap-4" noValidate onSubmit={handleSubmit(startQrPayment)}>
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label="Full Name" error={errors.customerName?.message}><Input {...register("customerName")} autoComplete="name" placeholder="Your full name" /></Field>
           <Field label="Email Address" error={errors.customerEmail?.message}><Input {...register("customerEmail")} type="email" autoComplete="email" placeholder="name@example.com" /></Field>

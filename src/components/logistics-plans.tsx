@@ -251,7 +251,7 @@ function PlanCheckout({
         <DialogTitle className="font-display text-2xl">{plan.name} — {plan.priceLabel}</DialogTitle>
         <DialogDescription>Enter your details to continue to secure payment.</DialogDescription>
       </DialogHeader>
-      <form className="mt-5 grid gap-4" noValidate onSubmit={handleSubmit(startPayment)}>
+      <form className="mt-5 grid gap-4" noValidate onSubmit={handleSubmit(startQrPayment)}>
         <Field label="Full Name" error={errors.customerName?.message}>
           <Input {...register("customerName")} className="h-11 bg-card" placeholder="Your full name" autoComplete="name" />
         </Field>
