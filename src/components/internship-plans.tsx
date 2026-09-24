@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { SectionHeading } from "@/components/marketing";
+import { QrPaymentDone, QrPaymentView, postJson } from "@/components/qr-payment";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -33,7 +34,9 @@ type PaymentStage =
   | { kind: "processing" }
   | { kind: "success"; student: string; plan: string; priceLabel: string; paymentId: string }
   | { kind: "failed" }
-  | { kind: "cancelled" };
+  | { kind: "cancelled" }
+  | { kind: "qr"; referenceId: string; student: string }
+  | { kind: "qr-done"; referenceId: string };
 
 declare global {
   interface Window {
@@ -53,16 +56,6 @@ async function loadRazorpayScript(): Promise<boolean> {
   });
 }
 
-async function postJson(path: string, body: unknown) {
-  const response = await fetch(path, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  const data = (await response.json().catch(() => ({}))) as Record<string, unknown>;
-  if (!response.ok) throw new Error(typeof data["error"] === "string" ? data["error"] : "Request failed");
-  return data;
-}
 
 export function InternshipPlansSection() {
   const [activePlan, setActivePlan] = useState<InternshipPlan | null>(null);
@@ -137,6 +130,16 @@ function PaymentRegistration({ plan, stage, setStage, onClose }: { plan: PaidInt
   const [error, setError] = useState<string>();
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<RegistrationData>({ resolver: zodResolver(registrationSchema) });
 
+  async function startQrPayment(values: RegistrationData) {
+    setError(undefined);
+    try {
+      const result = await postJson("/api/public/register-qr-payment", { plan: plan.id, ...values });
+      setStage({ kind: "qr", referenceId: result["referenceId"] as string, student: values.customerName });
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Could not save your details. Please try again.");
+    }
+  }
+
   async function startPayment(values: RegistrationData) {
     setError(undefined);
     const ready = await loadRazorpayScript();
@@ -185,6 +188,21 @@ function PaymentRegistration({ plan, stage, setStage, onClose }: { plan: PaidInt
   }
 
   if (stage.kind === "success") return <PaymentSuccess stage={stage} />;
+  if (stage.kind === "qr") {
+    return (
+      <QrPaymentView
+        planLabel={plan.registrationLabel}
+        priceLabel={`${plan.priceLabel} per student`}
+        customerName={stage.student}
+        referenceId={stage.referenceId}
+        onBack={() => setStage({ kind: "form" })}
+        onDone={() => setStage({ kind: "qr-done", referenceId: stage.referenceId })}
+      />
+    );
+  }
+  if (stage.kind === "qr-done") {
+    return <QrPaymentDone planLabel={plan.registrationLabel} priceLabel={`${plan.priceLabel} per student`} referenceId={stage.referenceId} />;
+  }
   if (stage.kind === "failed" || stage.kind === "cancelled") {
     return <PaymentIncomplete cancelled={stage.kind === "cancelled"} retry={() => setStage({ kind: "form" })} onClose={onClose} />;
   }
@@ -208,6 +226,16 @@ function PaymentRegistration({ plan, stage, setStage, onClose }: { plan: PaidInt
         {error && <p className="border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive" role="alert">{error}</p>}
         <Button type="submit" variant="accent" size="lg" className="w-full" disabled={isSubmitting || stage.kind === "processing"}>
           {isSubmitting || stage.kind === "processing" ? "Opening secure payment…" : `Pay ${plan.priceLabel}`}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          size="lg"
+          className="w-full"
+          disabled={isSubmitting || stage.kind === "processing"}
+          onClick={handleSubmit(startQrPayment)}
+        >
+          Pay via QR Code (UPI)
         </Button>
       </form>
     </div>

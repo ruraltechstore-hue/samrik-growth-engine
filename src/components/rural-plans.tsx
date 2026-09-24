@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { SectionHeading } from "@/components/marketing";
+import { QrPaymentDone, QrPaymentView, postJson } from "@/components/qr-payment";
 import { pricingNotice, ruralPlans, type RuralPlan } from "@/lib/rural-plans";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +27,9 @@ type Stage =
   | { kind: "processing" }
   | { kind: "success"; plan: string; priceLabel: string; paymentId: string }
   | { kind: "failed" }
-  | { kind: "cancelled" };
+  | { kind: "cancelled" }
+  | { kind: "qr"; referenceId: string }
+  | { kind: "qr-done"; referenceId: string };
 
 declare global {
   interface Window {
@@ -46,12 +49,6 @@ function loadRazorpayScript(): Promise<boolean> {
   });
 }
 
-async function postJson(path: string, body: unknown) {
-  const response = await fetch(path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
-  const data = (await response.json().catch(() => ({}))) as Record<string, unknown>;
-  if (!response.ok) throw new Error(typeof data["error"] === "string" ? (data["error"] as string) : "Request failed");
-  return data;
-}
 
 export function RuralPlansSection() {
   const [activePlan, setActivePlan] = useState<RuralPlan | null>(null);
@@ -129,11 +126,23 @@ function PlanCheckout({
   onClose: () => void;
 }) {
   const [error, setError] = useState<string>();
+  const [formValues, setFormValues] = useState<CustomerData>();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<CustomerData>({ resolver: zodResolver(customerSchema) });
+
+  async function startQrPayment(values: CustomerData) {
+    setError(undefined);
+    try {
+      const result = await postJson("/api/public/register-qr-payment", { plan: plan.id, ...values });
+      setFormValues(values);
+      setStage({ kind: "qr", referenceId: result["referenceId"] as string });
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Could not save your details. Please try again.");
+    }
+  }
 
   async function startPayment(values: CustomerData) {
     setError(undefined);
@@ -212,6 +221,23 @@ function PlanCheckout({
     );
   }
 
+  if (stage.kind === "qr") {
+    return (
+      <QrPaymentView
+        planLabel={plan.name}
+        priceLabel={plan.priceLabel}
+        customerName={formValues?.customerName ?? ""}
+        referenceId={stage.referenceId}
+        onBack={() => setStage({ kind: "form" })}
+        onDone={() => setStage({ kind: "qr-done", referenceId: stage.referenceId })}
+      />
+    );
+  }
+
+  if (stage.kind === "qr-done") {
+    return <QrPaymentDone planLabel={plan.name} priceLabel={plan.priceLabel} referenceId={stage.referenceId} />;
+  }
+
   if (stage.kind === "failed" || stage.kind === "cancelled") {
     const cancelled = stage.kind === "cancelled";
     return (
@@ -258,6 +284,16 @@ function PlanCheckout({
         )}
         <Button type="submit" variant="accent" size="lg" className="w-full" disabled={isSubmitting || stage.kind === "processing"}>
           {isSubmitting || stage.kind === "processing" ? "Opening secure payment…" : `Pay ${plan.priceLabel}`}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          size="lg"
+          className="w-full"
+          disabled={isSubmitting || stage.kind === "processing"}
+          onClick={handleSubmit(startQrPayment)}
+        >
+          Pay via QR Code (UPI)
         </Button>
       </form>
     </div>
