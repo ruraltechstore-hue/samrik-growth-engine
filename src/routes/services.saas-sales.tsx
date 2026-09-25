@@ -4,9 +4,9 @@ import { ServiceDetailPage } from "@/components/service-detail";
 export const Route = createFileRoute("/services/saas-sales")({
   head: () => ({
     meta: [
-      { title: "SaaS Services Solutions | Samrik Solutions" },
+      { title: "SaaS Services | Samrik Solutions" },
       { name: "description", content: "Samrik Solutions supports SaaS businesses with lead generation, prospecting, customer outreach, and sales pipeline support." },
-      { property: "og:title", content: "SaaS Services Solutions | Samrik Solutions" },
+      { property: "og:title", content: "SaaS Services | Samrik Solutions" },
       { property: "og:description", content: "Professional sales support to help SaaS companies reach potential customers and grow." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/services/saas-sales" },

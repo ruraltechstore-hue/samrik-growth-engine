@@ -83,7 +83,7 @@ export const serviceDetails = {
   "saas-sales": {
     slug: "saas-sales",
     icon: Boxes,
-    title: "SaaS Services Solutions",
+    title: "SaaS Services",
     eyebrow: "Sales service 01",
     description:
       "Samrik Solutions supports SaaS businesses in reaching potential customers and creating new sales opportunities.",
@@ -113,7 +113,7 @@ export const serviceDetails = {
   "logistics-sales": {
     slug: "logistics-sales",
     icon: Building2,
-    title: "Logistic Services Solutions",
+    title: "Logistic Services",
     eyebrow: "Sales service 02",
     description:
       "We help logistics and supply-chain businesses connect with potential customers and identify new business opportunities.",
