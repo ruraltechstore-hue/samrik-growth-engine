@@ -161,7 +161,7 @@ function ServicesIndex() {
           </div>
         </div>
       </section>
-      <section className="bg-surface py-20 md:py-28">
+      <section className="bg-surface pb-10 pt-20 md:pb-12 md:pt-28">
         <div className="section-shell">
           <SectionHeading
             eyebrow="BPO & Outsourcing Services"
@@ -196,7 +196,7 @@ function ServicesIndex() {
           </div>
         </div>
       </section>
-      <section className="bg-surface py-20 md:py-28">
+      <section className="bg-surface pb-20 pt-10 md:pb-28 md:pt-12">
         <div className="section-shell">
           <SectionHeading eyebrow="Additional Sales Support" title="Flexible Sales Capabilities" description="Targeted support that strengthens your existing sales and business-development efforts." />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4"><IconCard icon={Search} title="Lead Generation">Identify and connect businesses with relevant prospects.</IconCard><IconCard icon={TrendingUp} title="Business Development">Support organizations in identifying new opportunities and markets.</IconCard><IconCard icon={Target} title="Customer Acquisition">Help businesses create structured customer acquisition processes.</IconCard><IconCard icon={Megaphone} title="Sales Outreach">Professional communication and engagement with potential customers.</IconCard></div>
