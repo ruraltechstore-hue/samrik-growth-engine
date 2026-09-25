@@ -31,12 +31,12 @@ export const legalNavigation = [
 export const services = [
   {
     slug: "saas-sales",
-    title: "SaaS Sales",
+    title: "SaaS Services",
     description: "Help SaaS businesses generate leads, acquire customers, and expand their sales reach.",
   },
   {
     slug: "logistics-sales",
-    title: "Logistics Sales",
+    title: "Logistic Services",
     description: "Support logistics businesses with customer acquisition, sales outreach, and business development.",
   },
   {
