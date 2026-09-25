@@ -83,16 +83,16 @@ export const serviceDetails = {
   "saas-sales": {
     slug: "saas-sales",
     icon: Boxes,
-    title: "SaaS Sales Solutions",
+    title: "SaaS Services Solutions",
     eyebrow: "Sales service 01",
     description:
       "Samrik Solutions supports SaaS businesses in reaching potential customers and creating new sales opportunities.",
     subheading: undefined,
     paragraphs: [
-      "Our SaaS sales support helps software companies identify prospects, communicate value, and move opportunities through the sales pipeline. We focus on understanding your product and ideal customer profile so outreach is relevant and professional.",
+      "Our SaaS services support helps software companies identify prospects, communicate value, and move opportunities through the sales pipeline. We focus on understanding your product and ideal customer profile so outreach is relevant and professional.",
       "Whether you need lead generation, appointment setting, or sales pipeline support, we work as an extension of your team to help you grow your customer base.",
     ],
-    ctaPrimary: { label: "Discuss Your SaaS Sales Needs", to: "/partner" },
+    ctaPrimary: { label: "Discuss Your SaaS Services Needs", to: "/partner" },
     ctaSecondary: undefined,
     right: {
       type: "checklist",
@@ -113,13 +113,13 @@ export const serviceDetails = {
   "logistics-sales": {
     slug: "logistics-sales",
     icon: Building2,
-    title: "Logistics Sales Solutions",
+    title: "Logistic Services Solutions",
     eyebrow: "Sales service 02",
     description:
       "We help logistics and supply-chain businesses connect with potential customers and identify new business opportunities.",
     subheading: undefined,
     paragraphs: [
-      "Our logistics sales support is built around B2B relationship building. We help you identify the right prospects, initiate conversations, and support your business-development process.",
+      "Our logistic services support is built around B2B relationship building. We help you identify the right prospects, initiate conversations, and support your business-development process.",
       "From customer prospecting to follow-up and market expansion, our approach is designed to help logistics companies build a consistent pipeline of opportunities.",
     ],
     ctaPrimary: { label: "View Franchise Plans", to: "#franchise-plans" },

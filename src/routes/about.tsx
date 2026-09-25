@@ -52,8 +52,8 @@ export const Route = createFileRoute("/about")({
 });
 
 const services: Array<{ title: string; description: string; icon: LucideIcon; to: string }> = [
-  { title: "SaaS Sales", description: "Support businesses with prospect identification, lead generation, outreach, qualification, appointment setting, follow-up, and sales pipeline support.", icon: Boxes, to: "/services/saas-sales" },
-  { title: "Logistics Sales", description: "Support logistics and related businesses with B2B prospecting, client outreach, lead generation, business development, follow-up, and market expansion activities.", icon: Building2, to: "/services/logistics-sales" },
+  { title: "SaaS Services", description: "Support businesses with prospect identification, lead generation, outreach, qualification, appointment setting, follow-up, and sales pipeline support.", icon: Boxes, to: "/services/saas-sales" },
+  { title: "Logistic Services", description: "Support logistics and related businesses with B2B prospecting, client outreach, lead generation, business development, follow-up, and market expansion activities.", icon: Building2, to: "/services/logistics-sales" },
   { title: "Educational Services", description: "Provide practical learning and internship-oriented programs covering digital marketing, e-commerce, artificial intelligence, sales, lead generation, business development, freelancing, entrepreneurship, and digital business.", icon: GraduationCap, to: "/services/educational-services" },
   { title: "Rural Tech Store Services", description: "Provide access to digital and technology-enabled business opportunities designed around different participation models.", icon: Store, to: "/services/rural-tech-store" },
   { title: "Lead Generation", description: "Help businesses identify and connect with potential customers through structured prospecting, outreach, and lead-generation activities.", icon: Search, to: "/services" },
@@ -78,7 +78,7 @@ const values = [
 ];
 
 const audiences = [
-  { title: "Businesses", description: "Organizations looking for sales support, lead generation, logistics sales, or business development assistance.", icon: Building2 },
+  { title: "Businesses", description: "Organizations looking for sales support, lead generation, logistic services, or business development assistance.", icon: Building2 },
   { title: "Startups", description: "Growing businesses looking for structured sales support, customer acquisition activities, or business development opportunities.", icon: TrendingUp },
   { title: "Educational Institutions", description: "Colleges, universities, training institutes, and other educational organizations looking for relevant educational and internship programs.", icon: GraduationCap },
   { title: "Entrepreneurs", description: "Individuals and business owners looking for digital business opportunities, education, sales support, or growth-oriented solutions.", icon: BriefcaseBusiness },
@@ -98,7 +98,7 @@ const reasons = [
 ];
 
 const aboutFaqs = [
-  { q: "What does Samrik Solutions do?", a: "Samrik Solutions provides services across SaaS sales, logistics sales, educational services, rural digital business opportunities, lead generation, and business development." },
+  { q: "What does Samrik Solutions do?", a: "Samrik Solutions provides services across SaaS services, logistic services, educational services, rural digital business opportunities, lead generation, and business development." },
   { q: "Who can work with Samrik Solutions?", a: "Businesses, startups, educational institutions, entrepreneurs, professionals, and potential business partners can contact Samrik Solutions depending on their specific requirements." },
   { q: "Does Samrik Solutions offer customized solutions?", a: "Service requirements can vary depending on the organization, industry, target audience, and business objective. Contact the team to discuss the specific requirement." },
   { q: "How can I partner with Samrik Solutions?", a: "You can use the Partner With Us page to submit your requirement and provide your business details." },

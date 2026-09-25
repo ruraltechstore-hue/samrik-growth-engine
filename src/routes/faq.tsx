@@ -45,7 +45,7 @@ const faqCategories: Array<{
       },
       {
         q: "What services does Samrik Solutions provide?",
-        a: "Samrik Solutions currently provides SaaS Sales, Logistics Sales, Educational Services, Rural Tech Store Services opportunities, Lead Generation, and Business Development services.",
+        a: "Samrik Solutions currently provides SaaS Services, Logistic Services, Educational Services, Rural Tech Store Services opportunities, Lead Generation, and Business Development services.",
       },
       {
         q: "Who can work with Samrik Solutions?",
@@ -62,11 +62,11 @@ const faqCategories: Array<{
     ],
   },
   {
-    category: "SaaS Sales",
+    category: "SaaS Services",
     items: [
       {
-        q: "What does SaaS Sales support include?",
-        a: "SaaS Sales support can include lead generation, prospect identification, outreach, lead qualification, appointment setting, customer follow-up, and sales pipeline support.",
+        q: "What does SaaS Services support include?",
+        a: "SaaS Services support can include lead generation, prospect identification, outreach, lead qualification, appointment setting, customer follow-up, and sales pipeline support.",
       },
       {
         q: "Can SaaS companies use Samrik Solutions for lead generation?",
@@ -83,26 +83,26 @@ const faqCategories: Array<{
     ],
   },
   {
-    category: "Logistics Sales",
+    category: "Logistic Services",
     items: [
       {
-        q: "What does Logistics Sales support include?",
-        a: "Logistics Sales services can include B2B lead generation, prospecting, client outreach, business development, follow-up, relationship development, and market expansion activities.",
+        q: "What does Logistic Services support include?",
+        a: "Logistic Services can include B2B lead generation, prospecting, client outreach, business development, follow-up, relationship development, and market expansion activities.",
       },
       {
-        q: "Who can use your Logistics Sales services?",
+        q: "Who can use your Logistic Services?",
         a: "Logistics companies and businesses with relevant B2B sales or business development requirements can contact Samrik Solutions to discuss their needs.",
       },
       {
         q: "Can you help logistics businesses find potential clients?",
-        a: "Lead generation and prospecting are part of the Logistics Sales service offering. The exact approach depends on the target market and business requirement.",
+        a: "Lead generation and prospecting are part of the Logistic Services offering. The exact approach depends on the target market and business requirement.",
       },
       {
         q: "Are franchise plans available under Logistics Services?",
         a: "Yes. Logistics Services includes franchise participation plans. You can view the available plans under Services → Logistics Services → Franchise Plans & Opportunities.",
       },
       {
-        q: "Can Logistics Sales services be customized?",
+        q: "Can Logistic Services be customized?",
         a: "Yes. The scope can be discussed based on the company's target customers, market, service offering, and business objectives.",
       },
     ],

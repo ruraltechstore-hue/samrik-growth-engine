@@ -8,9 +8,9 @@ Create a modern, professional, responsive corporate website for a company called
 
 **Samrik Solutions** is a sales and business-development solutions company specializing in:
 
-1. SaaS Sales
+1. SaaS Services
 
-2. Logistics Sales
+2. Logistic Services
 
 3. Educational Sales
 
@@ -210,7 +210,7 @@ Heading:
 
 Create three large service cards.
 
-### SaaS Sales
+### SaaS Services
 
 Help SaaS businesses generate qualified leads, engage potential customers, and accelerate software sales.
 
@@ -218,7 +218,7 @@ Button:
 
 **Learn More**
 
-### Logistics Sales
+### Logistic Services
 
 Help logistics and supply-chain businesses connect with potential clients and expand their customer network.
 
@@ -388,13 +388,13 @@ Description:
 
 ---
 
-## Service 1 — SaaS Sales
+## Service 1 — SaaS Services
 
 Create a detailed service section.
 
 ### Heading:
 
-**SaaS Sales Solutions**
+**SaaS Services Solutions**
 
 Description:
 
@@ -422,15 +422,15 @@ Include:
 
 CTA:
 
-**Discuss Your SaaS Sales Needs**
+**Discuss Your SaaS Services Needs**
 
 ---
 
-## Service 2 — Logistics Sales
+## Service 2 — Logistic Services
 
 ### Heading:
 
-**Logistics Sales Solutions**
+**Logistic Services Solutions**
 
 Description:
 
@@ -594,9 +594,9 @@ Create a professional form with:
 
 Dropdown for Service Required:
 
-* SaaS Sales
+* SaaS Services
 
-* Logistics Sales
+* Logistic Services
 
 * Educational Sales
 
@@ -748,9 +748,9 @@ Create a professional footer.
 
 **Services**
 
-* SaaS Sales
+* SaaS Services
 
-* Logistics Sales
+* Logistic Services
 
 * Educational Sales
 
