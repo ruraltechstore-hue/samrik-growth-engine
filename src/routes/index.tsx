@@ -45,6 +45,8 @@ export const Route = createFileRoute("/")({
 });
 
 // IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const heroHighlights = ["24/7 Multilingual", "ISO 27001 Aligned", "HIPAA Compliant", "AI + RPA Native"] as const;
+
 function Index() {
   const serviceLinks = [
     "/services/saas-sales",
