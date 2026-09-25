@@ -70,11 +70,11 @@ function Index() {
               Sales & Business Development
             </p>
             <h1 className="mt-5 font-display text-4xl font-bold leading-[1.08] md:text-6xl lg:text-7xl">
-              Driving Growth Through Smarter Sales Solutions
+              Global outsourcing, engineered for scale.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-hero-foreground/80 md:text-lg">
-              Samrik Solutions helps SaaS companies, logistics and educational organizations accelerate customer
-              acquisition, expand their market reach and build sustainable growth through effective sales solutions.
+              Samrik Solutions runs mission-critical customer experience, healthcare, finance and back-office operations
+              for ambitious enterprises across 30+ industries.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button asChild variant="accent" size="lg">
