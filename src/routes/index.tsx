@@ -3,6 +3,7 @@ import {
   ArrowRight,
   Boxes,
   Building2,
+  Check,
   GraduationCap,
   Handshake,
   HeartHandshake,
@@ -86,6 +87,16 @@ function Index() {
                 <Link to="/services">Explore Our Services</Link>
               </Button>
             </div>
+            <ul className="mt-10 grid max-w-md grid-cols-1 gap-4 sm:max-w-lg sm:grid-cols-2 sm:gap-x-8">
+              {heroHighlights.map((highlight) => (
+                <li key={highlight} className="flex items-center gap-3 text-sm font-semibold text-hero-foreground/90">
+                  <span className="grid size-5 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground">
+                    <Check className="size-3" />
+                  </span>
+                  {highlight}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
