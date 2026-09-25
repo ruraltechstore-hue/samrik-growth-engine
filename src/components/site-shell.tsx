@@ -15,9 +15,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <div className="shrink-0"><Brand /></div>
           <nav className="ml-auto hidden items-center gap-4 min-[900px]:flex xl:gap-6" aria-label="Primary navigation">
             {navigation.map((item) => (
-              <Link key={item.to} to={item.to} activeOptions={{ exact: item.to === "/" }} className="whitespace-nowrap text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground xl:text-sm" activeProps={{ className: "text-foreground" }}>
-                {item.label}
-              </Link>
+              <NavLink key={item.to} label={item.label} to={item.to} />
             ))}
           </nav>
           <div className="ml-4 hidden min-[900px]:block xl:ml-6">
