@@ -16,6 +16,7 @@ export const navigation = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Services", to: "/services" },
+  { label: "Career", to: "https://forms-samrik.vercel.app/" },
   { label: "Partner With Us", to: "/partner" },
   { label: "FAQ", to: "/faq" },
   { label: "Contact Us", to: "/contact" },

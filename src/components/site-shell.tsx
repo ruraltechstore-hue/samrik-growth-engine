@@ -15,9 +15,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <div className="shrink-0"><Brand /></div>
           <nav className="ml-auto hidden items-center gap-4 min-[900px]:flex xl:gap-6" aria-label="Primary navigation">
             {navigation.map((item) => (
-              <Link key={item.to} to={item.to} activeOptions={{ exact: item.to === "/" }} className="whitespace-nowrap text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground xl:text-sm" activeProps={{ className: "text-foreground" }}>
-                {item.label}
-              </Link>
+              <NavLink key={item.to} label={item.label} to={item.to} />
             ))}
           </nav>
           <div className="ml-4 hidden min-[900px]:block xl:ml-6">
@@ -28,7 +26,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <SheetContent className="w-[88vw] border-border bg-background p-0">
               <SheetHeader className="border-b border-border p-6 text-left"><SheetTitle><Brand /></SheetTitle><SheetDescription>Sales and business-development solutions.</SheetDescription></SheetHeader>
               <nav className="flex flex-col p-4" aria-label="Mobile navigation">
-                {navigation.map((item) => <SheetClose asChild key={item.to}><Link to={item.to} className="border-b border-border px-3 py-4 font-semibold text-foreground">{item.label}</Link></SheetClose>)}
+                {navigation.map((item) => <SheetClose asChild key={item.to}><NavLink label={item.label} to={item.to} className="block border-b border-border px-3 py-4 font-semibold text-foreground" /></SheetClose>)}
               </nav>
               <div className="p-4"><SheetClose asChild><Button asChild variant="outline" size="lg" className="w-full bg-card"><a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="size-5" /> Chat on WhatsApp</a></Button></SheetClose></div>
             </SheetContent>
@@ -50,5 +48,21 @@ export function SiteShell({ children }: { children: ReactNode }) {
 }
 
 function FooterList({ title, items }: { title: string; items: ReadonlyArray<{ label: string; to: string }> }) {
-  return <div><h2 className="font-display text-sm font-bold uppercase tracking-wider">{title}</h2><ul className="mt-5 space-y-3">{items.map((item) => <li key={`${title}-${item.label}`}><Link to={item.to} className="text-sm text-hero-foreground/70 transition-colors hover:text-hero-foreground">{item.label}</Link></li>)}</ul></div>;
+  return <div><h2 className="font-display text-sm font-bold uppercase tracking-wider">{title}</h2><ul className="mt-5 space-y-3">{items.map((item) => <li key={`${title}-${item.label}`}><FooterLink label={item.label} to={item.to} /></li>)}</ul></div>;
+}
+
+function NavLink({ label, to, className }: { label: string; to: string; className?: string }) {
+  const base = className ?? "whitespace-nowrap text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground xl:text-sm";
+  if (to.startsWith("http")) {
+    return <a href={to} target="_blank" rel="noopener noreferrer" className={base}>{label}</a>;
+  }
+  return <Link to={to} activeOptions={{ exact: to === "/" }} className={base} activeProps={{ className: "text-foreground" }}>{label}</Link>;
+}
+
+function FooterLink({ label, to }: { label: string; to: string }) {
+  const className = "text-sm text-hero-foreground/70 transition-colors hover:text-hero-foreground";
+  if (to.startsWith("http")) {
+    return <a href={to} target="_blank" rel="noopener noreferrer" className={className}>{label}</a>;
+  }
+  return <Link to={to} className={className}>{label}</Link>;
 }
