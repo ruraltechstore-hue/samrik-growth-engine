@@ -138,18 +138,21 @@ const supportServices = [
   {
     icon: Headphones,
     title: "Customer Support",
+    slug: "customer-support",
     description: "Customer care across voice, chat, and email handled by trained teams following structured support processes designed around your customer experience requirements.",
     capabilities: ["Voice, chat, and email support", "Structured customer support processes"],
   },
   {
     icon: Mail,
     title: "Mail Support",
+    slug: "mail-support",
     description: "Professional email response management designed to maintain consistent communication, accuracy, and a reliable customer experience.",
     capabilities: ["Email response management", "Structured email support workflows"],
   },
   {
     icon: Database,
     title: "Data Entry Services",
+    slug: "data-entry",
     description: "Data capture, cleansing, digitization, and processing services supported by structured quality-control workflows.",
     capabilities: ["Data capture & digitization", "Quality-control processes"],
   },
@@ -232,12 +235,12 @@ function ServicesIndex() {
             align="center"
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {supportServices.map(({ icon: Icon, title, description, capabilities }) => (
+            {supportServices.map(({ icon: Icon, title, slug, description, capabilities }) => (
               <article key={title} className="rise-in flex min-w-0 flex-col border border-border bg-card p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1">
                 <span className="grid size-11 shrink-0 place-items-center rounded-md bg-accent text-accent-foreground"><Icon className="size-5" /></span>
                 <h3 className="mt-6 font-display text-xl font-bold text-card-foreground">{title}</h3>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{description}</p>
-                <ul className="mt-auto grid gap-3 pt-6">
+                <ul className="grid gap-3 pt-6">
                   {capabilities.map((capability) => (
                     <li key={capability} className="flex min-w-0 items-start gap-3 text-sm leading-6 text-foreground">
                       <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground"><Check className="size-3" /></span>
@@ -245,6 +248,9 @@ function ServicesIndex() {
                     </li>
                   ))}
                 </ul>
+                <Button asChild variant="link" className="mt-auto h-auto justify-start px-0 pt-6">
+                  <Link to={`/services/${slug}`}>Learn More <ArrowRight /></Link>
+                </Button>
               </article>
             ))}
           </div>
