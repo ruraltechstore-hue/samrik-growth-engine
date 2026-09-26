@@ -22,12 +22,6 @@ export const navigation = [
   { label: "Contact Us", to: "/contact" },
 ] as const;
 
-export const companyFooterNavigation = [
-  ...navigation,
-  { label: "Customer Support", to: "/services/customer-support" },
-  { label: "Mail Support", to: "/services/mail-support" },
-  { label: "Data Entry", to: "/services/data-entry" },
-] as const;
 
 export const legalNavigation = [
   { label: "Privacy Policy", to: "/privacy-policy" },
