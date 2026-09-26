@@ -134,6 +134,27 @@ const bpoServices = [
   },
 ] as const;
 
+const supportServices = [
+  {
+    icon: Headphones,
+    title: "Customer Support",
+    description: "Customer care across voice, chat, and email handled by trained teams following structured support processes designed around your customer experience requirements.",
+    capabilities: ["Voice, chat, and email support", "Structured customer support processes"],
+  },
+  {
+    icon: Mail,
+    title: "Mail Support",
+    description: "Professional email response management designed to maintain consistent communication, accuracy, and a reliable customer experience.",
+    capabilities: ["Email response management", "Structured email support workflows"],
+  },
+  {
+    icon: Database,
+    title: "Data Entry Services",
+    description: "Data capture, cleansing, digitization, and processing services supported by structured quality-control workflows.",
+    capabilities: ["Data capture & digitization", "Quality-control processes"],
+  },
+] as const;
+
 function ServicesIndex() {
   return (
     <>
