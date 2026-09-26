@@ -5,7 +5,7 @@ import { Brand } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { legalNavigation, navigation, services, siteConfig } from "@/config/site";
+import { companyFooterNavigation, legalNavigation, navigation, services, siteConfig } from "@/config/site";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
@@ -36,7 +36,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <main>{children}</main>
       <footer className="bg-hero text-hero-foreground">
         <div className="section-shell grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-4">
-          <FooterList title="Company" items={navigation.map((item) => ({ label: item.label, to: item.to }))} />
+          <FooterList title="Company" items={companyFooterNavigation.map((item) => ({ label: item.label, to: item.to }))} />
           <FooterList title="Services" items={[...services.map((item) => ({ label: item.title, to: `/services/${item.slug}` })), { label: "Lead Generation", to: "/services" }, { label: "Business Development", to: "/services" }]} />
           <FooterList title="Legal" items={legalNavigation} />
           <div><h2 className="font-display text-sm font-bold uppercase tracking-wider">Contact</h2><dl className="mt-5 space-y-4 text-sm text-hero-foreground/70"><div><dt className="font-semibold text-hero-foreground">Email</dt><dd className="mt-1"><a className="transition-colors hover:text-hero-foreground" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></dd></div><div><dt className="font-semibold text-hero-foreground">Phone</dt><dd className="mt-1"><a className="transition-colors hover:text-hero-foreground" href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a></dd></div><div><dt className="font-semibold text-hero-foreground">Address</dt><dd className="mt-1">{siteConfig.address}</dd></div></dl></div>

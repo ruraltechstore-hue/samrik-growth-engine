@@ -23,8 +23,11 @@ import { Route as ApiCancelRazorpayOrderRouteImport } from './routes/api/cancel-
 import { Route as ApiCreateRazorpayOrderRouteImport } from './routes/api/create-razorpay-order'
 import { Route as ApiVerifyRazorpayPaymentRouteImport } from './routes/api/verify-razorpay-payment'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesCustomerSupportRouteImport } from './routes/services.customer-support'
+import { Route as ServicesDataEntryRouteImport } from './routes/services.data-entry'
 import { Route as ServicesEducationalServicesRouteImport } from './routes/services.educational-services'
 import { Route as ServicesLogisticsSalesRouteImport } from './routes/services.logistics-sales'
+import { Route as ServicesMailSupportRouteImport } from './routes/services.mail-support'
 import { Route as ServicesRuralTechStoreRouteImport } from './routes/services.rural-tech-store'
 import { Route as ServicesSaasSalesRouteImport } from './routes/services.saas-sales'
 import { Route as ApiPublicCancelRazorpayOrderRouteImport } from './routes/api/public/cancel-razorpay-order'
@@ -104,6 +107,16 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesCustomerSupportRoute = ServicesCustomerSupportRouteImport.update({
+  id: '/customer-support',
+  path: '/customer-support',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesDataEntryRoute = ServicesDataEntryRouteImport.update({
+  id: '/data-entry',
+  path: '/data-entry',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesEducationalServicesRoute =
   ServicesEducationalServicesRouteImport.update({
     id: '/educational-services',
@@ -113,6 +126,11 @@ const ServicesEducationalServicesRoute =
 const ServicesLogisticsSalesRoute = ServicesLogisticsSalesRouteImport.update({
   id: '/logistics-sales',
   path: '/logistics-sales',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesMailSupportRoute = ServicesMailSupportRouteImport.update({
+  id: '/mail-support',
+  path: '/mail-support',
   getParentRoute: () => ServicesRoute,
 } as any)
 const ServicesRuralTechStoreRoute = ServicesRuralTechStoreRouteImport.update({
@@ -170,8 +188,11 @@ export interface FileRoutesByFullPath {
   '/api/cancel-razorpay-order': typeof ApiCancelRazorpayOrderRoute
   '/api/create-razorpay-order': typeof ApiCreateRazorpayOrderRoute
   '/api/verify-razorpay-payment': typeof ApiVerifyRazorpayPaymentRoute
+  '/services/customer-support': typeof ServicesCustomerSupportRoute
+  '/services/data-entry': typeof ServicesDataEntryRoute
   '/services/educational-services': typeof ServicesEducationalServicesRoute
   '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
+  '/services/mail-support': typeof ServicesMailSupportRoute
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
   '/services/saas-sales': typeof ServicesSaasSalesRoute
   '/services/': typeof ServicesIndexRoute
@@ -194,8 +215,11 @@ export interface FileRoutesByTo {
   '/api/cancel-razorpay-order': typeof ApiCancelRazorpayOrderRoute
   '/api/create-razorpay-order': typeof ApiCreateRazorpayOrderRoute
   '/api/verify-razorpay-payment': typeof ApiVerifyRazorpayPaymentRoute
+  '/services/customer-support': typeof ServicesCustomerSupportRoute
+  '/services/data-entry': typeof ServicesDataEntryRoute
   '/services/educational-services': typeof ServicesEducationalServicesRoute
   '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
+  '/services/mail-support': typeof ServicesMailSupportRoute
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
   '/services/saas-sales': typeof ServicesSaasSalesRoute
   '/services': typeof ServicesIndexRoute
@@ -220,8 +244,11 @@ export interface FileRoutesById {
   '/api/cancel-razorpay-order': typeof ApiCancelRazorpayOrderRoute
   '/api/create-razorpay-order': typeof ApiCreateRazorpayOrderRoute
   '/api/verify-razorpay-payment': typeof ApiVerifyRazorpayPaymentRoute
+  '/services/customer-support': typeof ServicesCustomerSupportRoute
+  '/services/data-entry': typeof ServicesDataEntryRoute
   '/services/educational-services': typeof ServicesEducationalServicesRoute
   '/services/logistics-sales': typeof ServicesLogisticsSalesRoute
+  '/services/mail-support': typeof ServicesMailSupportRoute
   '/services/rural-tech-store': typeof ServicesRuralTechStoreRoute
   '/services/saas-sales': typeof ServicesSaasSalesRoute
   '/services/': typeof ServicesIndexRoute
@@ -247,8 +274,11 @@ export interface FileRouteTypes {
     | '/api/cancel-razorpay-order'
     | '/api/create-razorpay-order'
     | '/api/verify-razorpay-payment'
+    | '/services/customer-support'
+    | '/services/data-entry'
     | '/services/educational-services'
     | '/services/logistics-sales'
+    | '/services/mail-support'
     | '/services/rural-tech-store'
     | '/services/saas-sales'
     | '/services/'
@@ -271,8 +301,11 @@ export interface FileRouteTypes {
     | '/api/cancel-razorpay-order'
     | '/api/create-razorpay-order'
     | '/api/verify-razorpay-payment'
+    | '/services/customer-support'
+    | '/services/data-entry'
     | '/services/educational-services'
     | '/services/logistics-sales'
+    | '/services/mail-support'
     | '/services/rural-tech-store'
     | '/services/saas-sales'
     | '/services'
@@ -296,8 +329,11 @@ export interface FileRouteTypes {
     | '/api/cancel-razorpay-order'
     | '/api/create-razorpay-order'
     | '/api/verify-razorpay-payment'
+    | '/services/customer-support'
+    | '/services/data-entry'
     | '/services/educational-services'
     | '/services/logistics-sales'
+    | '/services/mail-support'
     | '/services/rural-tech-store'
     | '/services/saas-sales'
     | '/services/'
@@ -429,6 +465,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/customer-support': {
+      id: '/services/customer-support'
+      path: '/customer-support'
+      fullPath: '/services/customer-support'
+      preLoaderRoute: typeof ServicesCustomerSupportRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/data-entry': {
+      id: '/services/data-entry'
+      path: '/data-entry'
+      fullPath: '/services/data-entry'
+      preLoaderRoute: typeof ServicesDataEntryRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/educational-services': {
       id: '/services/educational-services'
       path: '/educational-services'
@@ -441,6 +491,13 @@ declare module '@tanstack/react-router' {
       path: '/logistics-sales'
       fullPath: '/services/logistics-sales'
       preLoaderRoute: typeof ServicesLogisticsSalesRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/mail-support': {
+      id: '/services/mail-support'
+      path: '/mail-support'
+      fullPath: '/services/mail-support'
+      preLoaderRoute: typeof ServicesMailSupportRouteImport
       parentRoute: typeof ServicesRoute
     }
     '/services/rural-tech-store': {
@@ -496,16 +553,22 @@ declare module '@tanstack/react-router' {
 }
 
 interface ServicesRouteChildren {
+  ServicesCustomerSupportRoute: typeof ServicesCustomerSupportRoute
+  ServicesDataEntryRoute: typeof ServicesDataEntryRoute
   ServicesEducationalServicesRoute: typeof ServicesEducationalServicesRoute
   ServicesLogisticsSalesRoute: typeof ServicesLogisticsSalesRoute
+  ServicesMailSupportRoute: typeof ServicesMailSupportRoute
   ServicesRuralTechStoreRoute: typeof ServicesRuralTechStoreRoute
   ServicesSaasSalesRoute: typeof ServicesSaasSalesRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesCustomerSupportRoute: ServicesCustomerSupportRoute,
+  ServicesDataEntryRoute: ServicesDataEntryRoute,
   ServicesEducationalServicesRoute: ServicesEducationalServicesRoute,
   ServicesLogisticsSalesRoute: ServicesLogisticsSalesRoute,
+  ServicesMailSupportRoute: ServicesMailSupportRoute,
   ServicesRuralTechStoreRoute: ServicesRuralTechStoreRoute,
   ServicesSaasSalesRoute: ServicesSaasSalesRoute,
   ServicesIndexRoute: ServicesIndexRoute,
