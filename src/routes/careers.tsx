@@ -56,27 +56,26 @@ function CareersPage() {
     <>
       <section className="relative overflow-hidden bg-hero py-20 text-hero-foreground md:py-28">
         <div className="subtle-grid absolute inset-0 opacity-25" />
-        <div className="section-shell relative">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent-strong">Careers</p>
-          <h1 className="mt-4 max-w-4xl font-display text-4xl font-bold leading-tight md:text-6xl">Build Your Career With Samrik Solutions</h1>
-          <p className="mt-6 max-w-3xl text-base leading-8 text-hero-foreground/75 md:text-lg">
-            Join a growing team delivering customer experience, technology, healthcare, finance, sales, and business support solutions. At Samrik Solutions, we create opportunities for people to learn, grow, and build meaningful careers.
-          </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Button asChild variant="accent" size="lg"><a href="#open-positions">View Open Roles <ArrowRight /></a></Button>
-            <Button asChild variant="inverse" size="lg"><a href={applicationUrl} target="_blank" rel="noopener noreferrer">Apply Now <Send /></a></Button>
-          </div>
-        </div>
-      </section>
-
-      <section aria-label="Career statistics" className="border-b border-border bg-card">
-        <div className="section-shell grid grid-cols-2 lg:grid-cols-4">
-          {careerStats.map((stat, index) => (
-            <div key={stat.label} className={cn("rise-in px-4 py-8 text-center md:py-10", index % 2 !== 0 && "border-l border-border", index >= 2 && "border-t border-border lg:border-t-0", index === 2 && "lg:border-l")}>
-              <p className="font-display text-3xl font-bold text-primary md:text-4xl">{stat.value}</p>
-              <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground md:text-sm">{stat.label}</p>
+        <div className="section-shell relative grid gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent-strong">Careers</p>
+            <h1 className="mt-4 max-w-4xl font-display text-4xl font-bold leading-tight md:text-6xl">Build Your Career With Samrik Solutions</h1>
+            <p className="mt-6 max-w-3xl text-base leading-8 text-hero-foreground/75 md:text-lg">
+              Join a growing team delivering customer experience, technology, healthcare, finance, sales, and business support solutions. At Samrik Solutions, we create opportunities for people to learn, grow, and build meaningful careers.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button asChild variant="accent" size="lg"><a href="#open-positions">View Open Roles <ArrowRight /></a></Button>
+              <Button asChild variant="inverse" size="lg"><a href={applicationUrl} target="_blank" rel="noopener noreferrer">Apply Now <Send /></a></Button>
             </div>
-          ))}
+          </div>
+          <div aria-label="Career statistics" className="grid grid-cols-2 border border-hero-foreground/15 bg-hero-foreground/5 backdrop-blur-sm lg:w-90">
+            {careerStats.map((stat, index) => (
+              <div key={stat.label} className={cn("px-5 py-7 text-center", index % 2 !== 0 && "border-l border-hero-foreground/15", index >= 2 && "border-t border-hero-foreground/15")}>
+                <p className="font-display text-3xl font-bold text-accent-strong md:text-4xl">{stat.value}</p>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-hero-foreground/75 md:text-sm">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
