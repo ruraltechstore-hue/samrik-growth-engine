@@ -8,30 +8,14 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTi
 import { companyFooterNavigation, legalNavigation, navigation, services, siteConfig } from "@/config/site";
 
 export function SiteShell({ children }: { children: ReactNode }) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    // Only switch colors once the first (hero) section has been scrolled past.
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.85);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header
-        className={`sticky top-0 z-40 border-b transition-colors duration-300 ${
-          scrolled
-            ? "border-hero-foreground/10 bg-hero text-hero-foreground shadow-lg shadow-primary/20"
-            : "border-border/80 bg-background/95 text-foreground backdrop-blur"
-        }`}
-      >
+      <header className="sticky top-0 z-40 border-b border-border/80 bg-background/95 text-foreground backdrop-blur">
         <div className="section-shell flex h-18 items-center">
           <div className="shrink-0"><Brand /></div>
           <nav className="ml-auto hidden items-center gap-4 min-[900px]:flex xl:gap-6" aria-label="Primary navigation">
             {navigation.map((item) => (
-              <NavLink key={item.to} label={item.label} to={item.to} scrolled={scrolled} />
+              <NavLink key={item.to} label={item.label} to={item.to} />
             ))}
           </nav>
           <div className="ml-4 hidden min-[900px]:block xl:ml-6">
