@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Boxes,
   Building2,
-  Check,
   GraduationCap,
   Handshake,
   HeartHandshake,
