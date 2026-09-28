@@ -7,7 +7,6 @@ import {
   Check,
   Clock3,
   MapPin,
-  Send,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { IconCard, SectionHeading } from "@/components/marketing";
