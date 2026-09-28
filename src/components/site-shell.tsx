@@ -11,7 +11,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    // Only switch colors once the first (hero) section has been scrolled past.
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.85);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -27,7 +28,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         }`}
       >
         <div className="section-shell flex h-18 items-center">
-          <div className="shrink-0"><Brand inverse={scrolled} /></div>
+          <div className="shrink-0"><Brand /></div>
           <nav className="ml-auto hidden items-center gap-4 min-[900px]:flex xl:gap-6" aria-label="Primary navigation">
             {navigation.map((item) => (
               <NavLink key={item.to} label={item.label} to={item.to} scrolled={scrolled} />
