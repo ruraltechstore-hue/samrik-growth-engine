@@ -7,7 +7,6 @@ import {
   Check,
   Clock3,
   MapPin,
-  Send,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { IconCard, SectionHeading } from "@/components/marketing";
@@ -63,9 +62,8 @@ function CareersPage() {
             <p className="mt-6 max-w-3xl text-base leading-8 text-hero-foreground/75 md:text-lg">
               Join a growing team delivering customer experience, technology, healthcare, finance, sales, and business support solutions. At Samrik Solutions, we create opportunities for people to learn, grow, and build meaningful careers.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-9">
               <Button asChild variant="accent" size="lg"><a href="#open-positions">View Open Roles <ArrowRight /></a></Button>
-              <Button asChild variant="inverse" size="lg"><a href={applicationUrl} target="_blank" rel="noopener noreferrer">Apply Now <Send /></a></Button>
             </div>
           </div>
           <div aria-label="Career statistics" className="grid grid-cols-2 border border-hero-foreground/15 bg-hero-foreground/5 backdrop-blur-sm lg:w-90">
