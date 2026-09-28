@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Brand } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
