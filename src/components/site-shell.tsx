@@ -51,14 +51,12 @@ function FooterList({ title, items }: { title: string; items: ReadonlyArray<{ la
   return <div><h2 className="font-display text-sm font-bold uppercase tracking-wider">{title}</h2><ul className="mt-5 space-y-3">{items.map((item) => <li key={`${title}-${item.label}`}><FooterLink label={item.label} to={item.to} /></li>)}</ul></div>;
 }
 
-function NavLink({ label, to, className, scrolled = false }: { label: string; to: string; className?: string; scrolled?: boolean }) {
-  const base = className ?? `whitespace-nowrap text-xs font-semibold transition-colors xl:text-sm ${
-    scrolled ? "text-hero-foreground/75 hover:text-hero-foreground" : "text-muted-foreground hover:text-foreground"
-  }`;
+function NavLink({ label, to, className }: { label: string; to: string; className?: string }) {
+  const base = className ?? "whitespace-nowrap text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground xl:text-sm";
   if (to.startsWith("http")) {
     return <a href={to} target="_blank" rel="noopener noreferrer" className={base}>{label}</a>;
   }
-  return <Link to={to} activeOptions={{ exact: to === "/" }} className={base} activeProps={{ className: scrolled ? "text-hero-foreground" : "text-foreground" }}>{label}</Link>;
+  return <Link to={to} activeOptions={{ exact: to === "/" }} className={base} activeProps={{ className: "text-foreground" }}>{label}</Link>;
 }
 
 function FooterLink({ label, to }: { label: string; to: string }) {
