@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Boxes,
   Building2,
-  Check,
   GraduationCap,
   Handshake,
   HeartHandshake,
@@ -43,9 +42,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-const heroHighlights = ["24/7 Multilingual", "ISO 27001 Aligned", "HIPAA Compliant", "AI + RPA Native"] as const;
 
 function Index() {
   const serviceLinks = [
@@ -89,16 +85,6 @@ function Index() {
                 <Link to="/services">Explore Our Services</Link>
               </Button>
             </div>
-            <ul className="mt-10 grid max-w-md grid-cols-1 gap-4 sm:max-w-lg sm:grid-cols-2 sm:gap-x-8">
-              {heroHighlights.map((highlight) => (
-                <li key={highlight} className="flex items-center gap-3 text-sm font-semibold text-hero-foreground/90">
-                  <span className="grid size-5 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground">
-                    <Check className="size-3" />
-                  </span>
-                  {highlight}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
@@ -107,7 +93,7 @@ function Index() {
         <div className="section-shell">
           <SectionHeading
             eyebrow="Why Samrik Solutions"
-            title="Your Growth. Our Sales Expertise."
+            title="Your Growth. Our Service Expertise."
             description="From generating qualified opportunities to building meaningful customer relationships, we work alongside businesses to create scalable and effective sales strategies."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
