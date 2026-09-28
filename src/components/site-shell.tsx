@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Brand } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
@@ -8,30 +8,14 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTi
 import { companyFooterNavigation, legalNavigation, navigation, services, siteConfig } from "@/config/site";
 
 export function SiteShell({ children }: { children: ReactNode }) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    // Only switch colors once the first (hero) section has been scrolled past.
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.85);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header
-        className={`sticky top-0 z-40 border-b transition-colors duration-300 ${
-          scrolled
-            ? "border-hero-foreground/10 bg-hero text-hero-foreground shadow-lg shadow-primary/20"
-            : "border-border/80 bg-background/95 text-foreground backdrop-blur"
-        }`}
-      >
+      <header className="sticky top-0 z-40 border-b border-border/80 bg-background/95 text-foreground backdrop-blur">
         <div className="section-shell flex h-18 items-center">
           <div className="shrink-0"><Brand /></div>
           <nav className="ml-auto hidden items-center gap-4 min-[900px]:flex xl:gap-6" aria-label="Primary navigation">
             {navigation.map((item) => (
-              <NavLink key={item.to} label={item.label} to={item.to} scrolled={scrolled} />
+              <NavLink key={item.to} label={item.label} to={item.to} />
             ))}
           </nav>
           <div className="ml-4 hidden min-[900px]:block xl:ml-6">
@@ -67,14 +51,12 @@ function FooterList({ title, items }: { title: string; items: ReadonlyArray<{ la
   return <div><h2 className="font-display text-sm font-bold uppercase tracking-wider">{title}</h2><ul className="mt-5 space-y-3">{items.map((item) => <li key={`${title}-${item.label}`}><FooterLink label={item.label} to={item.to} /></li>)}</ul></div>;
 }
 
-function NavLink({ label, to, className, scrolled = false }: { label: string; to: string; className?: string; scrolled?: boolean }) {
-  const base = className ?? `whitespace-nowrap text-xs font-semibold transition-colors xl:text-sm ${
-    scrolled ? "text-hero-foreground/75 hover:text-hero-foreground" : "text-muted-foreground hover:text-foreground"
-  }`;
+function NavLink({ label, to, className }: { label: string; to: string; className?: string }) {
+  const base = className ?? "whitespace-nowrap text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground xl:text-sm";
   if (to.startsWith("http")) {
     return <a href={to} target="_blank" rel="noopener noreferrer" className={base}>{label}</a>;
   }
-  return <Link to={to} activeOptions={{ exact: to === "/" }} className={base} activeProps={{ className: scrolled ? "text-hero-foreground" : "text-foreground" }}>{label}</Link>;
+  return <Link to={to} activeOptions={{ exact: to === "/" }} className={base} activeProps={{ className: "text-foreground" }}>{label}</Link>;
 }
 
 function FooterLink({ label, to }: { label: string; to: string }) {
