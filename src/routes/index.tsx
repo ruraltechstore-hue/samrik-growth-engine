@@ -12,7 +12,7 @@ import {
   Users,
   Workflow,
 } from "lucide-react";
-import heroImage from "@/assets/samrik-growth-hero.jpg";
+import heroImage from "@/assets/samrik-new-hero.jpg";
 import { Button } from "@/components/ui/button";
 import { CTASection, IconCard, SectionHeading } from "@/components/marketing";
 import { services } from "@/config/site";
@@ -64,12 +64,13 @@ function Index() {
         />
         <div className="absolute inset-0 bg-hero/82 lg:bg-transparent lg:bg-gradient-to-r lg:from-hero lg:via-hero/92 lg:to-hero/15" />
         <div className="section-shell relative flex min-h-[680px] items-center py-20 lg:min-h-[760px]">
-          <div className="rise-in max-w-3xl">
+          <div className="rise-in max-w-3xl -ml-2 -mt-2 lg:-ml-6 lg:-mt-6">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent-strong">
               Sales & Business Development
             </p>
-            <h1 className="mt-5 font-display text-4xl font-bold leading-[1.08] md:text-6xl lg:text-7xl">
-              Global outsourcing, engineered for scale.
+            <h1 className="mt-5 font-display text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
+              Global outsourcing, <br className="hidden md:block" />
+              engineered for scale.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-hero-foreground/80 md:text-lg">
               Samrik Solutions runs mission-critical customer experience, healthcare, finance and back-office operations
