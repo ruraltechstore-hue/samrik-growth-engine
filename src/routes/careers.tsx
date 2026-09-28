@@ -117,7 +117,7 @@ function CareersPage() {
           <p className="mt-6 text-sm text-muted-foreground" aria-live="polite">
             Showing {visibleJobs.length} {visibleJobs.length === 1 ? "role" : "roles"}
           </p>
-          <div className="mt-6 grid items-stretch gap-6 lg:grid-cols-2">
+          <div className="mt-6 grid items-stretch gap-6">
             {visibleJobs.map((job) => <JobCard key={job.title} job={job} />)}
           </div>
 
