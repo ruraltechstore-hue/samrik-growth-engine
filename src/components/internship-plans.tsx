@@ -87,7 +87,7 @@ export function InternshipPlansSection() {
                 ))}
               </div>
               <div className="mt-auto pt-8">
-                <Button variant={plan.payment ? "accent" : "outline"} size="lg" className="w-full" onClick={() => openPlan(plan)}>
+                <Button variant="outline" size="lg" className="w-full" onClick={() => openPlan(plan)}>
                   {plan.payment ? "Register Now" : "Request Pricing"}
                 </Button>
               </div>

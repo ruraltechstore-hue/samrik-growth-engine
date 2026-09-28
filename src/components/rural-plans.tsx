@@ -56,7 +56,7 @@ export function RuralPlansSection() {
               key={plan.id}
               className={cn(
                 "rise-in relative flex h-full flex-col border bg-card p-7 shadow-sm transition-transform duration-300 hover:-translate-y-1",
-                plan.popular ? "border-accent-strong shadow-md" : "border-border",
+                plan.popular ? "border-border shadow-md" : "border-border",
               )}
             >
               {plan.popular && (
@@ -77,7 +77,7 @@ export function RuralPlansSection() {
                   </li>
                 ))}
               </ul>
-              <Button variant={plan.popular ? "accent" : "outline"} size="lg" className="mt-8 w-full" onClick={() => openPlan(plan)}>
+              <Button variant="outline" size="lg" className="mt-8 w-full" onClick={() => openPlan(plan)}>
                 Register Now
               </Button>
             </article>
