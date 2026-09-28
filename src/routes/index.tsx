@@ -93,7 +93,7 @@ function Index() {
         <div className="section-shell">
           <SectionHeading
             eyebrow="Why Samrik Solutions"
-            title="Your Growth. Our Service Expertise."
+            title="Your Growth. Our Expertise."
             description="From generating qualified opportunities to building meaningful customer relationships, we work alongside businesses to create scalable and effective sales strategies."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
