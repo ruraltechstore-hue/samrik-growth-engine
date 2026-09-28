@@ -6,3 +6,5 @@
 - [x] Verify About page content, links, responsive layout, accessibility, and metadata.
 - [ ] Verify samrik.co.in in Resend (blocked: DNS verification).
 - [ ] Replace in-memory payment and enquiry storage with a permanent non-Supabase database (blocked: database connection).
+- [x] Add the Careers page, internal navigation, editable roles, filters, and application links.
+- [x] Verify Careers on desktop, tablet, and mobile, including navigation, filters, scrolling, and external links.

@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Careers content is maintained in `src/data/jobs.ts`; keep role, category, benefit, statistic, and hiring-process edits there so the page layout remains reusable.
