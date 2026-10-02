@@ -63,7 +63,7 @@ export function LogisticsPlansSection() {
               )}
               <h3 className="max-w-[70%] font-display text-xl font-bold text-card-foreground">{plan.name}</h3>
               <p className="mt-3 font-display text-4xl font-bold text-foreground">{plan.priceLabel}</p>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Total franchise price · INR</p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Franchise price · INR</p>
               <ul className="mt-6 grid gap-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 text-sm leading-6 text-muted-foreground">
