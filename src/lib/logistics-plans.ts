@@ -6,8 +6,8 @@ export const logisticsPlans = [
   {
     id: "logistics-agent-franchise",
     name: "Agent Franchise",
-    priceLabel: "₹82,600",
-    amountPaise: 8260000,
+    priceLabel: "₹1,00,000",
+    amountPaise: 10000000,
     popular: false,
     features: [
       "Access to the available multi-service platform",
@@ -21,8 +21,8 @@ export const logisticsPlans = [
   {
     id: "logistics-distributor-franchise",
     name: "Distributor Franchise",
-    priceLabel: "₹1,18,000",
-    amountPaise: 11800000,
+    priceLabel: "₹1,80,000 + GST",
+    amountPaise: 18000000,
     popular: true,
     features: [
       "Distributor-level platform access",
@@ -36,8 +36,8 @@ export const logisticsPlans = [
   {
     id: "logistics-super-distributor",
     name: "Super Distributor",
-    priceLabel: "₹2,36,000",
-    amountPaise: 23600000,
+    priceLabel: "₹2,50,000 + GST",
+    amountPaise: 25000000,
     popular: false,
     features: [
       "Super Distributor-level platform access",
